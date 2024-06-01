@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+
 <html>
 <head>
 	<style>
@@ -9,7 +12,7 @@
 			margin: 10px;
 			padding: 20px;
 			width: 500px;
-			height: 100px;
+			height: 300px;
 			background-color: #3E8DDC; 
 			font-size: 20px;
 			font-color: white;
@@ -24,28 +27,11 @@
 	</div>
 </body>
 
-<head>
-	<style>
-		div.list {
-			top: -55px;
-			left: 700px;
-			position: relative;
-			margin: 10px;
-			padding: 20px;
-			width: 500px;
-			height: 100px;
-			background-color: #3E8DDC; 
-			font-size: 20px;
-			font-color: white;
-			border: 2px solid;
-		}
-	</style>
-</head>
+
 
 <body>
-	<div class="list"> To do list 
-	<p> 체크 형태로 만들어야함 
-	</div>
+<%@ include file="list.jsp" %>
+</body>
 </body>
 
 </html>
