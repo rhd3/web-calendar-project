@@ -1,40 +1,74 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.15/es5-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.15/es5-sham.min.js"></script>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>ÀÏÁ¤µî·Ï »À´ë</title>
-    <link rel="stylesheet" href="calendar.css">
+    <title>ìº˜ë¦°ë”</title>
+   
 </head>
 <body>
-    <div id="calendar-container">
-        <header>
-            <button id="prev-month">&lt;</button>
-            <h2 id="month-year"></h2>
-            <button id="next-month">&gt;</button>
-        </header>
-        <div id="weekdays">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
-        </div>
-        <div id="calendar-days"></div>
-    </div>
-    <div id="event-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-date"></h2>
-            <textarea id="event-text" placeholder="ÀÏÁ¤ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä"></textarea>
-            <button id="save-event">ÀúÀå</button>
-            <button id="delete-event">»èÁ¦</button>
-        </div>
-    </div>
-    
-    <script src="calendar.js"></script>
+	<script type="text/javascript">
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth() + 1;
+		var day = today.getDate();
+		<!-- document.write(year + "ë…„ " + month + "ì›” " + day + "ì¼"); -->
+	</script>
+	
+	<style type="text/css">
+	
+		.date {border-collapse:separate;  border-color:black; border-style:solid; border-width:1px; text-align: center; width: 10%; min-height: 50px;}
+		.line {border-collapse:collapse;  border-color:black; border-style:solid; border-width:0px; text-align: center; width: 100%; display: flex; align-items: center; justify-content: center;}
+</style>
+		
+	
+<div align-items="center" justify-content="center" style="justify-content: center;">
+	<div width="70%" height="50px" style="text-align: center; color: black; background-color: #b7e4b5; display: flex; align-items: center; justify-content: center; margin-top: 50px; margin-bottom: 50px;">
+		
+			<button id="prev-month">ì´ì „ë‹¬</button>
+
+				<div style= "margin-left: 10%; margin-right: 10%;" ><script type="text/javascript" >
+					document.write(year + "ë…„ " + month + "ì›” ");
+				</script></div>
+
+			<button id="next-month">ë‹¤ìŒë‹¬</button>
+	</div>
+		
+
+		<table width="70%" height="50px" padding-left=auto; padding-right=auto style="margin: 0 auto;">
+		  	<thead>
+			<tr>
+			<th class="date" width="10%" height="50px">ì›”</th>
+			<th class="date">í™”</th>
+			<th class="date">ìˆ˜</th>
+			<th class="date">ëª©</th>
+			<th class="date">ê¸ˆ</th>
+			<th class="date">í† </th>
+			<th class="date">ì¼</th>
+		  </tr></thead>
+		
+
+			<c:forEach begin="1" end="5" step="1" var="i">
+		  	<tr>
+				<c:forEach begin="1" end="7" step="1" var="j">
+					<td class="date">
+						<div class="line"> ë‚ ì§œ </div>
+						<div class="line"> ì¼ì • 1 </div>
+						<div class="line"> ì¼ì • 2 </div>
+						<div class="line"> ì¼ì • 3 </div>
+						<div class="line"> ì¼ì • 5 </div>
+						<div class="line"> ì¼ì • 6 </div>
+					</td>
+				</c:forEach>
+		  	</tr>
+			</c:forEach>
+		</table>
+</div>
+
 </body>
 </html>
