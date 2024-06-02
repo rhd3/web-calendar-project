@@ -19,7 +19,7 @@ userId, userPw, userName, userNum, userTel //권한컬럼 추가예정..
 index
 일단 여기에 로그인 페이지 구현하면 될거 같은데 필요에 따라 리다이렉션으로 로그엔 페이지 따로 만들어도 됨
 
-userId, userPw, userName, userNum, userTel 
+varchar = userId, userPw, userName, userNum, userTel 
 
 menu
 메뉴바 파일 (학생/교수 구분해뒀음 필요에 따라 합쳐도 되고 동아리장용 메뉴바를 만들어도 될듯)
