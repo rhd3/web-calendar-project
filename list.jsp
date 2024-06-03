@@ -14,7 +14,7 @@
             background-color: #3E8DDC;
             font-size: 15px;
             color: white;
-            border: 2px bold;
+            border: 2px bold; // 이거해야하나?
         }
     </style>
     <script>
