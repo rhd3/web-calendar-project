@@ -15,7 +15,7 @@
 			height: 300px;
 			background-color: #3E8DDC; 
 			font-size: 20px;
-			font-color: white;
+			color: white;
 			border: 2px solid;
 		}
 	</style>
