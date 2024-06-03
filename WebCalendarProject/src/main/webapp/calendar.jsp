@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ÀÏÁ¤µî·Ï »À´ë</title>
+    <title>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</title>
     <link rel="stylesheet" href="calendar.css">
 </head>
 <body>
@@ -29,12 +29,13 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modal-date"></h2>
-            <textarea id="event-text" placeholder="ÀÏÁ¤ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä"></textarea>
-            <button id="save-event">ÀúÀå</button>
-            <button id="delete-event">»èÁ¦</button>
+            <textarea id="event-text" placeholder="ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½"></textarea>
+            <button id="save-event">ï¿½ï¿½ï¿½ï¿½</button>
+            <button id="delete-event">ï¿½ï¿½ï¿½ï¿½</button>
         </div>
     </div>
     
     <script src="calendar.js"></script>
 </body>
 </html>
+//
