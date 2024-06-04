@@ -21,8 +21,10 @@
         <p><input id="userName" name="userName" type="text" placeholder="이름"></p>
         <p><input id="userNum" name="userNum" type="text" placeholder="학번"></p>
         <p><input id="userTel" name="userTel" type="tel" placeholder="전화번호"></p>
-		<p><button class="btn">회원가입</button></p>
-			
+		<p><button class="btn">회원가입</button></p>			
 		</form>
+
+		<p><button class="btn" onclick="location.href='login.jsp'">로그인으로 돌아가기</button></p>
+
 	</div>
 </html>

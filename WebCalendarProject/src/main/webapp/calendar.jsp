@@ -12,6 +12,12 @@
    
 </head>
 <body>
+
+
+	<jsp:include page="notice.jsp" />
+
+
+
 	<script type="text/javascript">
 		var today = new Date();
 		var year = today.getFullYear();
@@ -52,10 +58,16 @@
 			<th class="date">일</th>
 		  </tr></thead>
 		
-
+<!-- -->
 			<c:forEach begin="1" end="5" step="1" var="i">
+
+
+
 		  	<tr>
 				<c:forEach begin="1" end="7" step="1" var="j">
+
+
+
 					<td class="date">
 						<div class="line"> 날짜 </div>
 						<div class="line"> 일정 1 </div>
