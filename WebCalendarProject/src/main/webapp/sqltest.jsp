@@ -10,8 +10,8 @@
 <body>
 	<h1>MySQL 연결드라이버 테스트</h1>
 	<%
-		String jdbcUrl = "jdbc:mysql://localhost:3306/id";
-		String dbId = "root";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/id"; <!-- DB 이름 넣기 -->
+		String dbId = "root"; 
 		String dbPwd = "1111";
 		
 		try
