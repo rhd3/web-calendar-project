@@ -1,12 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<footer class="pt-3 mt-4 text-body-secondary border-top">
+      &copy; 김경진 권혁민 이상준 지명현
+</footer>
