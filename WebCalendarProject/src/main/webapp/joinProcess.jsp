@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="utf-8"%>
-<% request.setCharacterEncoding("utf-8"); %>
+<% request.setCharacterEncoding("EUC-KR"); %>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 		String userName = request.getParameter("userName");
 		String userSnum = request.getParameter("userNum");
 		String userTel = request.getParameter("userTel");
-		
+		String permission = request.getParameter("permission");
 		String dbURL = "jdbc:mysql://localhost:3306/userdb?useUnicode=true&characterEncoding=UTF-8";
 		String dbUser = "root";
 		String dbPW = "1111";
@@ -28,13 +28,14 @@
         	Class.forName("com.mysql.jdbc.Driver");
         	conn = DriverManager.getConnection(dbURL, dbUser, dbPW);
         	
-        	String sql = "INSERT INTO infouser (userId, userPw, userName, userNum,userTel ) VALUES(?,?,?,?,?)";
+        	String sql = "INSERT INTO infouser (userId, userPw, userName, userNum,userTel,permission ) VALUES(?,?,?,?,?,?)";
         	pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
         	pstmt.setString(2, userPw);
         	pstmt.setString(3, userName);
         	pstmt.setString(4, userSnum);
         	pstmt.setString(5, userTel);
+        	pstmt.setString(6, permission);
         	pstmt.executeUpdate();
         	
             out.println("<script>alert('회원가입 성공!!'); location.href='login.jsp';</script>");
