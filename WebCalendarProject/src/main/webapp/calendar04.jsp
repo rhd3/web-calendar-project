@@ -40,6 +40,7 @@
     color : blue;
 }
     </style>
+   <jsp:include page="notice.jsp" />
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
