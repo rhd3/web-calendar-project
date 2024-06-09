@@ -41,6 +41,7 @@
 }
     </style>
    <jsp:include page="notice.jsp" />
+   <jsp:include page="list.jsp" />
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
