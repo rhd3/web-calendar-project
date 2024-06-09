@@ -1,23 +1,31 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <html>
-
 <head>
-    <style>
-        .todo-container {
-            top: -250px;
-            left: 700px;
-            position: relative;
-            margin: 10px;
-            padding: 20px;
-            width: 500px;
-            height: 300px;
-            background-color: #3E8DDC;
-            font-size: 15px;
-            color: white;
-            border: 2px bold; // 이거해야하나?
-        }
-    </style>
+    <title>To Do List</title>
+</head>
+<body>
+    <button onclick="openNoticePopup()">To do list</button>
+    <dialog id="todoPopup">
+        <div class="todo-container">
+            <h2>할 일 목록</h2>
+            <span></span><br>
+            <input id="todo">
+            <button id="add-button">+</button>
+            <div id="todo-list"></div>
+
+            <button onclick="closeNoticePopup()">닫기</button>
+        </div>
+    </dialog>
+
     <script>
+        function openNoticePopup() {
+            document.getElementById('todoPopup').showModal();
+        }
+
+        function closeNoticePopup() {
+            document.getElementById('todoPopup').close();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const input = document.querySelector('#todo');
             const addButton = document.querySelector('#add-button');
@@ -69,14 +77,5 @@
             });
         });
     </script>
-</head>
-<body>
-    <div class="todo-container">
-        <h2>할 일 목록</h2>
-        <span></span><br>
-        <input id="todo">
-        <button id="add-button">+</button>
-        <div id="todo-list"></div>
-    </div>
 </body>
 </html>
