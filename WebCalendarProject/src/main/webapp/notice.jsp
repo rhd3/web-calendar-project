@@ -33,6 +33,7 @@
     </script>
 </head>
 <body>
-    <button onclick="openNoticePopup()">공지사항</button>
+    <button onclick="openNoticePopup()" style="position: absolute; top: 45px; left: 325px;">공지사항</button>
+ 
 </body>
 </html>
