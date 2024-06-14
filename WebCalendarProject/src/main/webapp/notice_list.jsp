@@ -5,30 +5,28 @@
 
 <html>
 <head>
-<title>공지사항</title>
+    <title>공지사항</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-	<table>
-<thead>
-	<tr>
-		<th>제목</th>
-		<th>작성자</th>
-		<th>조회수</th>
-		<th>작성일자</th>
-	</tr>
-</thead>
-
-<tbody>							
-<c:forEach items="" var="">							
-	게시글이 반복될 부분
-</c:forEach>
-</tbody>
-</table>
-
-<div>
-<a href="${contextPath }/board/write">
-<input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">
-</a>
-</div>
+    <p>목록 구현.. 및 목록 버튼 생성, 글쓰기 버튼 생성(innotice.jsp), 작성자 유효성 검사, 또?</p>
+    <div class="button-container">
+        <button onclick="location.href='${contextPath}/notice_list.jsp'">목록</button>
+        <button onclick="location.href='${contextPath}/innotice.jsp'">글 쓰기</button>
+    </div>
 </body>
 </html>
