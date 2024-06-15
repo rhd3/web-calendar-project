@@ -68,68 +68,99 @@
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const input = document.querySelector('#todo');
-            const addButton = document.querySelector('#add-button');
-            const todoList = document.querySelector('#todo-list');
-            const alertSpan = document.querySelector('span.alert');
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.querySelector('#todo');
+        const addButton = document.querySelector('#add-button');
+        const todoList = document.querySelector('#todo-list');
+        const alertSpan = document.querySelector('span.alert');
+        const userId = 'user123'; // 현재 사용자 ID (예: 세션 또는 다른 방법으로 가져온 값)
 
-            const createCheckbox = () => {
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.className = 'custom-checkbox'; // 사용자 정의 클래스 추가
-                checkbox.addEventListener('change', handleCheckboxChange);
-                return checkbox;
-            };
+        const createCheckbox = () => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'custom-checkbox'; // 사용자 정의 클래스 추가
+            checkbox.addEventListener('change', handleCheckboxChange);
+            return checkbox;
+        };
 
-            const createDeleteButton = () => {
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = "삭제";
-                deleteButton.addEventListener('click', handleDeleteButtonClick);
-                return deleteButton;
-            };
+        const createDeleteButton = () => {
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "삭제";
+            deleteButton.addEventListener('click', handleDeleteButtonClick);
+            return deleteButton;
+        };
 
-            const addTodo = () => {
-                if (input.value === '') {
-                    alertSpan.textContent = '할 일을 입력하세요!';
-                    return;
+        const addTodo = () => {
+            if (input.value === '') {
+                alertSpan.textContent = '할 일을 입력하세요!';
+                return;
+            }
+
+            const item = document.createElement('div');
+            const checkbox = createCheckbox(); // 체크박스 생성
+            const text = document.createElement('span');
+            text.textContent = input.value;
+            text.style.fontSize = '16px'; // 입력값 글씨 크기 키우기
+
+            item.appendChild(checkbox);
+            item.appendChild(text);
+            item.appendChild(createDeleteButton());
+
+            todoList.appendChild(item);
+
+            saveTodoToDatabase(input.value); // 데이터베이스에 저장
+
+            input.value = '';
+            alertSpan.textContent = '';
+        };
+
+        const handleCheckboxChange = (event) => {
+            const textElement = event.target.nextSibling;
+            textElement.style.textDecoration = event.target.checked ? 'line-through' : 'none';
+        };
+
+        const handleDeleteButtonClick = (event) => {
+            const item = event.target.parentNode;
+            todoList.removeChild(item);
+            deleteTodoFromDatabase(item.querySelector('span').textContent); // 데이터베이스에서 삭제
+        };
+
+        const saveTodoToDatabase = (todoText) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'saveTodo.jsp', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('할일이 저장되었습니다.');
                 }
-
-                const item = document.createElement('div');
-                const checkbox = createCheckbox(); // 체크박스 생성
-                const text = document.createElement('span');
-                text.textContent = input.value;
-                text.style.fontSize = '16px'; // 입력값 글씨 크기 키우기
-
-                item.appendChild(checkbox);
-                item.appendChild(text);
-                item.appendChild(createDeleteButton());
-
-                todoList.appendChild(item);
-
-                input.value = '';
-                alertSpan.textContent = '';
             };
+            xhr.send(`userId=${encodeURIComponent(userId)}&todo=${encodeURIComponent(todoText)}`);
+        };
 
-            const handleCheckboxChange = (event) => {
-                const textElement = event.target.nextSibling;
-                textElement.style.textDecoration = event.target.checked ? 'line-through' : 'none';
-            };
-
-            const handleDeleteButtonClick = (event) => {
-                todoList.removeChild(event.target.parentNode);
-            };
-
-            addButton.addEventListener('click', addTodo);
-
-            input.addEventListener('keypress', (event) => {
-                const ENTER = 13;
-                if (event.keyCode === ENTER) {
-                    addTodo();
+        const deleteTodoFromDatabase = (todoText) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'deleteTodo.jsp', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('할일이 삭제되었습니다.');
                 }
-            });
+            };
+            xhr.send(`userId=${encodeURIComponent(userId)}&todo=${encodeURIComponent(todoText)}`);
+        };
+
+        addButton.addEventListener('click', addTodo);
+
+        input.addEventListener('keypress', (event) => {
+            const ENTER = 13;
+            if (event.keyCode === ENTER) {
+                addTodo();
+            }
         });
-    </script>
+    });
+</script>
+
 </head>
 <body>
     <div class="todo-container">

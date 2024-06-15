@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-글 쓰기 구현
+d
 </body>
 </html>
