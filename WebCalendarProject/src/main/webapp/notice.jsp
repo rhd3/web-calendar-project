@@ -38,7 +38,7 @@
     <div class="notice">
         <div class="notice-header">
             <span>공지사항</span>
-            <button onclick="location.href='innotice.jsp'">+</button>
+            <button onclick="location.href='notice_list.jsp'">+</button>
         </div>
         <ul>
             <li> 내용 </li>
