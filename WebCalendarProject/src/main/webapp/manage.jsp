@@ -45,7 +45,7 @@
     }
 
     // Event VO를 반환해서 Calendar에서 활용
-    // 필터링 구현하실 때 이 메소드를 수정하셔서 필터링된 이벤트목록을 반환
+    // 필터링 구현하실 때 이 메소드를 수정해서 필터링된 이벤트목록을 반환
     private List<Event> getEvents() {
         List<Event> eventList = new ArrayList<>();
 
@@ -131,7 +131,7 @@
                 selectable: true,
                 selectOverlap: true,
                 dayMaxEvents: 5,
-                
+
                 events: [
                     <% List<Event> events = getEvents();
                        for (Event event : events) { %>
@@ -155,75 +155,135 @@
                     <% } %>
                 ],
 
-                // 날짜 클릭 이벤트 핸들러
                 dateClick: function (info) {
                     $('#eventModal').modal('show');
                     $('#eventModal').find('input[name="start-date"]').val(info.dateStr);
                     $('#eventModal').find('input[name="end-date"]').val(info.dateStr);
                     $('#eventModal').find('input[name="title"]').val('');
+                    $('#eventModal').find('textarea[name="description"]').val('');
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
                         if (title && startDate && endDate) {
-                            calendar.addEvent({
-                                title: title,
-                                start: startDate,
-                                end: endDate,
-                                description: description
+                            $.ajax({
+                                url: 'addEvent.jsp',
+                                method: 'POST',
+                                data: {
+                                    title: title,
+                                    start_date: startDate,
+                                    end_date: endDate,
+                                    description: description
+                                },
+                                success: function (response) {
+                                    calendar.addEvent({
+                                        title: title,
+                                        start: startDate,
+                                        end: endDate,
+                                        description: description
+                                    });
+                                    $('#eventModal').modal('hide');
+                                }
                             });
-                            $('#eventModal').modal('hide');
                         }
                     });
                 },
 
-                // 드래그로 날짜 범위를 선택할 때 이벤트 핸들러
                 select: function (info) {
                     $('#eventModal').modal('show');
                     $('#eventModal').find('input[name="start-date"]').val(info.startStr);
                     $('#eventModal').find('input[name="end-date"]').val(info.endStr);
                     $('#eventModal').find('input[name="title"]').val('');
+                    $('#eventModal').find('textarea[name="description"]').val('');
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
+
+                        //회원에 따라 카테고리를 구분할 수 있도록 수정 
+                        const category = "personal";
+                        //회원에 따라 studentid를 구분할 수 있도록 수정 
+                        const studentid = 123;
+                        //회원에 따라 groupid를 구분할 수 있도록 수정 
+                        const groupid = 1;
+
                         if (title && startDate && endDate) {
-                            calendar.addEvent({
-                                title: title,
-                                start: startDate,
-                                end: endDate,
-                                description: description
+                            $.ajax({
+                                url: 'addEvent.jsp',
+                                method: 'POST',
+                                data: {
+                                    title: title,
+                                    start_date: startDate,
+                                    end_date: endDate,
+                                    description: description,
+                                    category: category,
+                                    studentid: studentid,
+                                    groupid: groupid
+                                },
+                                success: function (response) {
+                                    calendar.addEvent({
+                                        title: title,
+                                        start: startDate,
+                                        end: endDate,
+                                        description: description,
+                                        category: category,
+                                        studentid: studentid,
+                                        groupid: groupid
+                                    });
+                                    $('#eventModal').modal('hide');
+                                }
                             });
-                            $('#eventModal').modal('hide');
                         }
                     });
                 },
 
-                // 이벤트 클릭 시 이벤트 핸들러
                 eventClick: function (info) {
                     $('#eventModal').modal('show');
                     $('#eventModal').find('input[name="start-date"]').val(info.event.startStr);
                     $('#eventModal').find('input[name="end-date"]').val(info.event.endStr || info.event.startStr);
                     $('#eventModal').find('input[name="title"]').val(info.event.title);
                     $('#eventModal').find('textarea[name="description"]').val(info.event.extendedProps.description);
+                    $('#eventModal').find('input, textarea').attr('readonly', false);
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
                         if (title && startDate && endDate) {
-                            info.event.setProp('title', title);
-                            info.event.setDates(startDate, endDate);
-                            info.event.setExtendedProp('description', description);
-                            $('#eventModal').modal('hide');
+                            $.ajax({
+                                url: 'updateEvent.jsp',
+                                method: 'POST',
+                                data: {
+                                    id: info.event.id,
+                                    title: title,
+                                    start_date: startDate,
+                                    end_date: endDate,
+                                    description: description
+                                },
+                                success: function (response) {
+                                    info.event.setProp('title', title);
+                                    info.event.setDates(startDate, endDate);
+                                    info.event.setExtendedProp('description', description);
+                                    $('#eventModal').modal('hide');
+                                }
+                            });
                         }
                     });
                     $('#deleteEvent').off('click').on('click', function () {
-                        if (toastr.success('삭제되었습니다.')) {
-                            info.event.remove();
-                            $('#eventModal').modal('hide');
+                        if (confirm('삭제하시겠습니까?')) {
+                            $.ajax({
+                                url: 'deleteEvent.jsp',
+                                method: 'POST',
+                                data: {
+                                    id: info.event.id
+                                },
+                                success: function (response) {
+                                    info.event.remove();
+                                    $('#eventModal').modal('hide');
+                                }
+                            });
                         }
                     });
                 }
@@ -236,8 +296,7 @@
 <div id='calendar'></div>
 
 <!-- 모달 창 -->
-<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -250,19 +309,19 @@
                 <form>
                     <div class="form-group">
                         <label for="event-title" class="col-form-label">제목:</label>
-                        <input type="text" class="form-control" name="title" readonly>
+                        <input type="text" class="form-control" name="title">
                     </div>
                     <div class="form-group">
                         <label for="event-description" class="col-form-label">내용:</label>
-                        <textarea class="form-control" name="description" readonly></textarea>
+                        <textarea class="form-control" name="description"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="event-start-date" class="col-form-label">시작 날짜:</label>
-                        <input type="text" class="form-control" name="start-date" readonly>
+                        <input type="text" class="form-control" name="start-date">
                     </div>
                     <div class="form-group">
                         <label for="event-end-date" class="col-form-label">종료 날짜:</label>
-                        <input type="text" class="form-control" name="end-date" readonly>
+                        <input type="text" class="form-control" name="end-date">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
@@ -271,7 +330,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

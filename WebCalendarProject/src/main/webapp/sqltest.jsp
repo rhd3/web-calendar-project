@@ -10,7 +10,7 @@
 <body>
 	<h1>MySQL 연결드라이버 테스트</h1>
 	<%
-		String jdbcUrl = "jdbc:mysql://localhost:3306/id";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/calendardb";
 		String dbId = "root"; 
 		String dbPwd = "1111";
 		
