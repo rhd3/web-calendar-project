@@ -1,11 +1,25 @@
 *본인의 필요에 따라 얼마든지 변경해도 되지만 변경하고 나서 이 파일에 적어주기
 
 
+< DB >
+
+mysql 
+
+    String dbURL = "jdbc:mysql://localhost:3306/userdb?useUnicode=true&characterEncoding=UTF-8";
+		String dbUser = "root";
+		String dbPW = "1111";
+
+userdb.infouser //테이블
+
+userId, userPw, userName, userNum, userTel //권한컬럼 추가예정..
+
 
 <  F  I   L   E   >
 
 index
 일단 여기에 로그인 페이지 구현하면 될거 같은데 필요에 따라 리다이렉션으로 로그엔 페이지 따로 만들어도 됨
+
+varchar = userId, userPw, userName, userNum, userTel 
 
 menu
 메뉴바 파일 (학생/교수 구분해뒀음 필요에 따라 합쳐도 되고 동아리장용 메뉴바를 만들어도 될듯)
