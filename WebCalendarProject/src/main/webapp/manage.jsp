@@ -44,8 +44,6 @@
         }
     }
 
-    // Event VO를 반환해서 Calendar에서 활용
-    // 필터링 구현하실 때 이 메소드를 수정해서 필터링된 이벤트목록을 반환
     private List<Event> getEvents() {
         List<Event> eventList = new ArrayList<>();
 
@@ -131,6 +129,7 @@
                 selectable: true,
                 selectOverlap: true,
                 dayMaxEvents: 5,
+                displayEventTime: false,
 
                 events: [
                     <% List<Event> events = getEvents();
@@ -141,6 +140,7 @@
                         start: '<%= event.getStartDate() %>',
                         end: '<%= event.getEndDate() %>',
                         description: '<%= event.getDescription() %>',
+                        category: '<%= event.getCategory() %>',
                         <% if (event.getCategory().equals("personal")) { %>
                         backgroundColor: 'yellow',
                         textColor: 'black'
@@ -161,11 +161,15 @@
                     $('#eventModal').find('input[name="end-date"]').val(info.dateStr);
                     $('#eventModal').find('input[name="title"]').val('');
                     $('#eventModal').find('textarea[name="description"]').val('');
+                    $('#eventModal').find('select[name="category"]').val('personal');
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
+                        var category = $('#eventModal').find('select[name="category"]').val();
+                        var studentid = 123;  // 기본 studentid, 필요에 따라 수정
+                        var groupid = $('#eventModal').find('select[name="category"]').val();      // 기본 groupid, 필요에 따라 수정
                         if (title && startDate && endDate) {
                             $.ajax({
                                 url: 'addEvent.jsp',
@@ -174,14 +178,20 @@
                                     title: title,
                                     start_date: startDate,
                                     end_date: endDate,
-                                    description: description
+                                    description: description,
+                                    category: category,
+                                    studentid: studentid,
+                                    groupid: groupid
                                 },
                                 success: function (response) {
                                     calendar.addEvent({
                                         title: title,
                                         start: startDate,
                                         end: endDate,
-                                        description: description
+                                        description: description,
+                                        category: category,
+                                        studentid: studentid,
+                                        groupid: groupid
                                     });
                                     $('#eventModal').modal('hide');
                                 }
@@ -196,17 +206,14 @@
                     $('#eventModal').find('input[name="end-date"]').val(info.endStr);
                     $('#eventModal').find('input[name="title"]').val('');
                     $('#eventModal').find('textarea[name="description"]').val('');
+                    $('#eventModal').find('select[name="category"]').val('personal');
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
-
-                        //회원에 따라 카테고리를 구분할 수 있도록 수정 
-                        const category = "personal";
-                        //회원에 따라 studentid를 구분할 수 있도록 수정 
+                        var category = $('#eventModal').find('select[name="category"]').val();
                         const studentid = 123;
-                        //회원에 따라 groupid를 구분할 수 있도록 수정 
                         const groupid = 1;
 
                         if (title && startDate && endDate) {
@@ -245,12 +252,14 @@
                     $('#eventModal').find('input[name="end-date"]').val(info.event.endStr || info.event.startStr);
                     $('#eventModal').find('input[name="title"]').val(info.event.title);
                     $('#eventModal').find('textarea[name="description"]').val(info.event.extendedProps.description);
-                    $('#eventModal').find('input, textarea').attr('readonly', false);
+                    $('#eventModal').find('select[name="category"]').val(info.event.extendedProps.category);
+                    $('#eventModal').find('input, textarea, select').attr('readonly', false);
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
+                        var category = $('#eventModal').find('select[name="category"]').val();
                         if (title && startDate && endDate) {
                             $.ajax({
                                 url: 'updateEvent.jsp',
@@ -260,12 +269,14 @@
                                     title: title,
                                     start_date: startDate,
                                     end_date: endDate,
-                                    description: description
+                                    description: description,
+                                    category: category,
                                 },
                                 success: function (response) {
                                     info.event.setProp('title', title);
                                     info.event.setDates(startDate, endDate);
                                     info.event.setExtendedProp('description', description);
+                                    info.event.setExtendedProp('category', category);
                                     $('#eventModal').modal('hide');
                                 }
                             });
@@ -322,6 +333,14 @@
                     <div class="form-group">
                         <label for="event-end-date" class="col-form-label">종료 날짜:</label>
                         <input type="text" class="form-control" name="end-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-category" class="col-form-label">카테고리:</label>
+                        <select class="form-control" name="category">
+                            <option value="personal">개인일정</option>
+                            <option value="club">동아리일정</option>
+                            <option value="course">과목</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
