@@ -15,7 +15,7 @@
 
 
 	<jsp:include page="notice.jsp" />
-
+	<jsp:include page="list.jsp" />
 
 
 	<script type="text/javascript">
