@@ -40,9 +40,7 @@
             <span>공지사항</span>
             <button onclick="location.href='notice_list.jsp'">+</button>
         </div>
-        <ul>
-            <li> 내용 </li>
-        </ul>
+            <li>제목(title) 작성일(regtime)만 뜨도록. 제목 클릭시 해당 페이지(view.jsp)로 이동</li>
     </div>
 </body>
 
