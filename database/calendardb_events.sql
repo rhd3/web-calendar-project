@@ -30,9 +30,9 @@ CREATE TABLE `events` (
   `end_date` date NOT NULL,
   `category` enum('personal','course','club') NOT NULL,
   `studentid` int DEFAULT NULL,
-  `groupid` int DEFAULT NULL,
+  `groupid` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'개인 일정','개인 일정 예제입니다.','2024-06-20','2024-06-20','personal',123,NULL),(2,'과목 일정','과목 일정 예제입니다.','2024-06-21','2024-06-21','course',123,NULL),(3,'동아리 일정','동아리 일정 예제입니다.','2024-06-22','2024-06-22','club',123,2),(4,'테스트1','테스트2','2024-06-23','2024-06-24','personal',1234,NULL),(5,'테스트2','테스트3','2024-06-20','2024-06-22','club',NULL,1);
+INSERT INTO `events` VALUES (8,'124','3142123','2024-06-25','2024-06-29','personal',123,'시스템보안'),(9,'123','12314','2024-06-24','2024-06-27','personal',123,'NAN'),(10,'124','3123','2024-06-27','2024-06-29','personal',123,'이러지마세요'),(12,'1243','124123','2024-06-26','2024-06-26','personal',123,NULL),(14,'1423','1243','2024-06-26','2024-06-28','personal',123,NULL),(15,'1235124','3145234','2024-06-13','2024-06-15','club',123,NULL),(16,'12344','12345234','2024-06-11','2024-06-13','club',123,NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-16  7:53:04
+-- Dump completed on 2024-06-16 23:23:43
