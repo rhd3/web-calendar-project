@@ -74,5 +74,4 @@
         <div id="todo-list"></div>
     </div>
 </body>
-
 </html>
