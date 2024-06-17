@@ -2,14 +2,20 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head> 
+
 <meta charset="UTF-8">
 <script src="./resource/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./resource/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="./resource/css/font-awesome.min.css"/>
+
 <title>학사 일정</title>
+
 </head>
+
 <body>
+
 <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #304C79;">
   <div class="container-fluid">
   	<a class="navbar-brand" href="#">
@@ -22,9 +28,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href='manage.jsp'">관리자</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#">뭐쓰지</a>
         </li>
@@ -43,8 +47,11 @@
           <a class="nav-link disabled" aria-disabled="true">여긴.. 학번이나 이름띄울까?없애도되고..</a>
         </li>
       </ul>
+     <a style="margin-right:20px">
+     	<button type="button" class="btn btn-warning" onclick="location.href='manage.jsp'">일정등록</button>
+     </a>
      <a>
-     	<button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그인</button>
+     	<button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
      </a>
     </div>
   </div>
