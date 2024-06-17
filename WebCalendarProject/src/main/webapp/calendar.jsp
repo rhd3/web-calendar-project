@@ -102,6 +102,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+    	
         #calendar {
             max-width: 1100px;
             margin: 40px auto;
@@ -213,7 +214,7 @@
 
 <jsp:include page="header.jsp"/>
 <div style="padding-top: 5%;">
-<jsp:include page="notice.jsp" />
+	<jsp:include page="notice.jsp" />
 </div>
 
 

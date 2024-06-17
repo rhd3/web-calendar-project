@@ -304,6 +304,7 @@
     </script>
 </head>
 <body>
+
 <jsp:include page="header.jsp"/>
 
 <div id='calendar'></div>
@@ -354,5 +355,6 @@
         </div>
     </div>
 </div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

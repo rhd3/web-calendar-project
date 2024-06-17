@@ -8,12 +8,11 @@
             width: 500px;
             height: 300px;
             font-size: 20px;
-            background-color: #e0e0e0; 
-            border: 2px solid black;
+            background-color: white; 
         }
         .notice-header {
-            height: 30%;
-            background-color: blue;
+            height: 25%;
+            background-color: #328DDC;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -38,8 +37,7 @@
             width: 500px;
             height: 300px;
             font-size: 15px;
-            background-color: #e0e0e0;
-            border: 2px solid black;
+            background-color: white;
             
         }
     </style>
