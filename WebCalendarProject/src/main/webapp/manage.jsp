@@ -125,6 +125,7 @@
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
+	<link href="./resource/images/title-logo.png" rel="shortcut icon" type="image/x-icon">
     <meta charset='utf-8'/>
     <title>일정 보기</title>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>

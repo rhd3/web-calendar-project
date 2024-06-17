@@ -77,7 +77,7 @@ int studentid = 2020011898;
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">뭐쓰지</a>
+          <a class="nav-link custom-link" aria-current="page" href='calendar.jsp'>캘린더</a>
         </li>
 
 
@@ -114,15 +114,7 @@ int studentid = 2020011898;
         </li>
       </ul>
 
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          옵션
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="#">옵션1</a></li>
-          <li><a class="dropdown-item" href="#">옵션2</a></li>
-        </ul>
-      </div>
+      
       <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
     </div>

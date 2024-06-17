@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="./resources/image/title-logo.png" rel="shortcut icon" type="image/x-icon">
     <title>공지사항</title>
    <style>
         body {
