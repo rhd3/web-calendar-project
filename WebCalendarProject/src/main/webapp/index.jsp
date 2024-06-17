@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>학사 일정</title>
+<link href="./resources/images/title-logo.png" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
 

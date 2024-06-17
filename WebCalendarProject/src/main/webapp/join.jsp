@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>학사일정</title>
 <link rel="stylesheet" href="loginstyle.css" type="text/css" />
-
+<link href="./resource/images/title-logo.png" rel="shortcut icon" type="image/x-icon">
 <script>
     function checkPassword() {
         var pw = document.getElementById("userPw").value;

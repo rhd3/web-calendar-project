@@ -44,6 +44,8 @@
 
 <html>
 <head>
+	<link href="./resource/images/title-logo.png" rel="shortcut icon" type="image/x-icon">
+	
     <meta charset="UTF-8">
     <title>게시물 작성</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
