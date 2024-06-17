@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 
-<<<<<<< HEAD
 
 
 <%!
@@ -11,10 +10,6 @@
 
 <%!
 		
-=======
-<%! 
-    // Event 클래스 선언
->>>>>>> 93c6b5ced43fd18743f029903f885e49c541113a
     public class Event {
         private int id;
         private String title;
@@ -41,7 +36,7 @@
     }
 
     // Event 목록을 반환하는 메소드
-    private List<Event> getEvents(String studentId) {
+    private List<Event> getEvents(int studentid) {
         List<Event> eventList = new ArrayList<>();
 
         try {
@@ -50,7 +45,7 @@
 
             String sql = "SELECT * FROM events WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, studentId);
+            pstmt.setInt(1, studentid);
 
             ResultSet rs = pstmt.executeQuery();
 
@@ -75,15 +70,6 @@
 
         return eventList;
     }
-%>
-
-<% 
-    // studentId를 안전하게 가져오기
-    String studentId = request.getParameter("studentid");
-    if (studentId == null) {
-        throw new IllegalArgumentException("studentid 파라미터가 없습니다.");
-    }
-    List<Event> events = getEvents(studentId);
 %>
 
 <!DOCTYPE html>
@@ -147,14 +133,8 @@
                
                 // 필터링을 구현할 때, getEvents() 함수에서 필터링되게
                 events: [
-<<<<<<< HEAD
                     <% List<Event> events = getEvents(studentid);
                        for (Event event : events) { %>
-=======
-                    <% 
-                        for (Event event : events) { 
-                    %>
->>>>>>> 93c6b5ced43fd18743f029903f885e49c541113a
                     {
                         id: <%= event.getId() %>,
                         title: '<%= event.getTitle() %>',
@@ -212,7 +192,6 @@
 </head>
 
 <body style="background-color : #E8E8E8;">
-<<<<<<< HEAD
 
 
 
@@ -220,13 +199,6 @@
 
 
 <div id='calendar'></div>
-=======
-    <jsp:include page="header.jsp"/>
-    <div style="padding-top: 5%;">
-        <jsp:include page="notice.jsp" />
-    </div>
-    <div id='calendar'></div>
->>>>>>> 93c6b5ced43fd18743f029903f885e49c541113a
     
     <!-- 모달 창 -->
     <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
