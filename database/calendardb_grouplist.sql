@@ -23,10 +23,12 @@ DROP TABLE IF EXISTS `grouplist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `grouplist` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `groupid` varchar(20) NOT NULL,
   `studentid` int NOT NULL,
-  `groupid` int DEFAULT NULL,
-  PRIMARY KEY (`studentid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `authority` int DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +37,7 @@ CREATE TABLE `grouplist` (
 
 LOCK TABLES `grouplist` WRITE;
 /*!40000 ALTER TABLE `grouplist` DISABLE KEYS */;
+INSERT INTO `grouplist` VALUES (1,'NAN',2020011898,NULL),(2,'NAN',20190101,NULL),(3,'NAN',20210101,NULL),(4,'JSP',2020011898,1),(5,'2020011898',2020011898,1);
 /*!40000 ALTER TABLE `grouplist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-16 23:23:43
+-- Dump completed on 2024-06-17 21:12:58

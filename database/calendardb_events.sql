@@ -28,11 +28,9 @@ CREATE TABLE `events` (
   `description` text,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `category` enum('personal','course','club') NOT NULL,
-  `studentid` int DEFAULT NULL,
-  `groupid` varchar(20) DEFAULT NULL,
+  `category` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +39,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (8,'124','3142123','2024-06-25','2024-06-29','personal',123,'시스템보안'),(9,'123','12314','2024-06-24','2024-06-27','personal',123,'NAN'),(10,'124','3123','2024-06-27','2024-06-29','personal',123,'이러지마세요'),(12,'1243','124123','2024-06-26','2024-06-26','personal',123,NULL),(14,'1423','1243','2024-06-26','2024-06-28','personal',123,NULL),(15,'1235124','3145234','2024-06-13','2024-06-15','club',123,NULL),(16,'12344','12345234','2024-06-11','2024-06-13','club',123,NULL);
+INSERT INTO `events` VALUES (8,'124','3142123','2024-06-25','2024-06-29','NAN'),(9,'123','12314','2024-06-24','2024-06-27','2020011898'),(10,'124','3123','2024-06-27','2024-06-29','NAN'),(12,'1243','124123','2024-06-26','2024-06-26','JSP'),(14,'1423','1243','2024-06-26','2024-06-28','2020011898'),(15,'1235124','3145234','2024-06-13','2024-06-15','JSP'),(16,'12344','12345234','2024-06-11','2024-06-13','NAN'),(17,'ㅁㄶㅇㄹ','ㅁㄴㅇㄹ','2024-06-05','2024-06-05','personal'),(18,'123','assdf','2024-06-05','2024-06-05','2020011898'),(19,'ㅁㄴㅇㄹ','ㅁㄶㅇㄹ','2024-06-10','2024-06-10','JSP');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-16 23:23:43
+-- Dump completed on 2024-06-17 21:12:58
