@@ -200,6 +200,11 @@
 
 <div id='calendar'></div>
     
+
+
+
+
+
     <!-- 모달 창 -->
     <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -242,6 +247,8 @@
             </div>
         </div>
     </div>
+
+
 <jsp:include page="footer.jsp" />
 </body>
 </html>
