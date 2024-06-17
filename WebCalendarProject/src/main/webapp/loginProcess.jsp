@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
     
@@ -13,7 +13,7 @@
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
 	
-		String dbURL = "jdbc:mysql://localhost:3306/CalendarDB?useUnicode=true&characterEncoding=UTF-8";
+		String dbURL = "jdbc:mysql://localhost:3306/CalendarDB";
 		String dbUser = "root";
 		String dbPW = "1111";
 		

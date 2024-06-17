@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<% request.setCharacterEncoding("EUC-KR"); %>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>joinProcess</title>
 
 </head>
@@ -16,7 +15,7 @@
 		String userName = request.getParameter("userName");
 		String userSnum = request.getParameter("userNum");
 		String userTel = request.getParameter("userTel");
-		String dbURL = "jdbc:mysql://localhost:3306/CalendarDB?useUnicode=true&characterEncoding=UTF-8";
+		String dbURL = "jdbc:mysql://localhost:3306/CalendarDB";
 		String dbUser = "root";
 		String dbPW = "1111"; //db연결을 위한 db의 url, id,pw정보
 

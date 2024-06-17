@@ -1,11 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 
-<%! 
-    //String studentId = request.getParameter("studentid");
-	int studentid = 2020011898;
+<%
+    int studentid;
+    String studentidParam = request.getParameter("studentid");
+    if (studentidParam != null && !studentidParam.isEmpty()) {
+        try {
+            studentid = Integer.parseInt(studentidParam);
+            // 이제 studentid 변수를 사용할 수 있습니다.
+        } catch (NumberFormatException e) {
+            // studentidParam이 숫자로 변환될 수 없는 경우 처리
+        }
+    } else {
+        // studentid 파라미터가 전달되지 않은 경우 처리
+    }
+%>
 
-	
+
+
+<%!
+		
     public class Event {
         private int id;
         private String title;
@@ -151,7 +165,7 @@
                 // 필터링을 구현할 때, getEvents() 함수에서 필터링되게
            
                 events: [
-                    <% List<Event> events = getEvents(studentid);
+                    <% List<Event> events = getEvents(Integer.parseInt(request.getParameter("studentid")));
                        for (Event event : events) { %>
                     {
                         id: <%= event.getId() %>,
@@ -216,6 +230,7 @@
 
 
 <body style="background-color : #E8E8E8;">
+
 
 <jsp:include page="header.jsp"/>
 <div style="padding-top: 5%;">

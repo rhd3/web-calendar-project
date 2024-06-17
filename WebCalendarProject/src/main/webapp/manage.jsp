@@ -376,7 +376,11 @@
                 <div class="form-group">
                     <label for="event-category" class="col-form-label">카테고리:</label>
                     <select class="form-control" name="category">
+<<<<<<< HEAD
                         <option value=<%= studentid %>>개인일정</option>
+=======
+                        <option value=<%= studentid %>>개인일정</option> 
+>>>>>>> f294b1dfc9002b98d063ea3aa6f6b16548eef922
 
                         <%
                             List<String> groupIds = getGroupIdsByStudentId(studentid); // 학생 ID 변수 studentid 값 기준
