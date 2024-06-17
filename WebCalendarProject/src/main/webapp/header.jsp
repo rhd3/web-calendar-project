@@ -44,7 +44,7 @@
         </li>
       </ul>
      <a>
-     	<button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그인</button>
+     	<button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
      </a>
     </div>
   </div>
