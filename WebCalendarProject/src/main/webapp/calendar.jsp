@@ -2,7 +2,7 @@
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 
 <%! 
-    //String studentId = request.getParameter("studentid");
+    String studentId = request.getParameter("studentid");
 	int studentid = 2020011898;
 
 	
