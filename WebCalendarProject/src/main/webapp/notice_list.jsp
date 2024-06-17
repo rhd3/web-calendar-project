@@ -91,6 +91,7 @@
 
 </head>
 <body>
+<jsp:include page="header.jsp"/>
     <table>
         <tr>
             <th class="num">번호</th>

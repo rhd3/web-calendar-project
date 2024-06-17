@@ -56,12 +56,6 @@ int studentid = 2020011898;
   }
 </style>
 
-<script>
-function redirectToMenu() {
-    window.location.href = "https://www.cju.ac.kr/www/selectTnRstrntMenuListU.do?key=5117";
-}
-</script>
-
 </head>
 
 <body>
@@ -82,37 +76,23 @@ function redirectToMenu() {
           <a class="nav-link custom-link" aria-current="page" href='calendar.jsp'>캘린더</a>
         </li>
 
-        <li class="nav-item dropdown">
+         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            숨기기
+            교내 홈페이지
           </a>
           <ul class="dropdown-menu" data-bs-theme="light">
-            <li><div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  할 일 1
-                </label>
-              </div></li>
-            <li><div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                  할 일 2
-                </label>
-              </div></li>
-            <li><div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled">
-                <label class="form-check-label" for="flexCheckDisabled">
-                  할 일 3
-                </label>
-              </div></li>
+          	<li><a class="dropdown-item" href="https://www.cju.ac.kr/">청주대학교</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://portal.cju.ac.kr/">포털시스템</a></li>
+            <li><a class="dropdown-item" href="https://hive.cju.ac.kr/">에델바이스</a></li>
+            <li><a class="dropdown-item" href="https://www.cju.ac.kr/www/selectTnRstrntMenuListU.do?key=5117">학식 메뉴</a></li>
           </ul>
         </li>
-
+        
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">--</a>
         </li>
       </ul>
-<button type="button" class="btn btn-info" onclick="redirectToMenu()">학식 메뉴</button>
       <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
       
