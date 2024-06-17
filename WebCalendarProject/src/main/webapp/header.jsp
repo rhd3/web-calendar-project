@@ -1,8 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.util.*, java.time.*" %>
 <!DOCTYPE html>
-<html>
 
+<%!
+
+int studentid = 2020011898;
+ 
+ 
+  private List<String> getGroupIdsByStudentId(int studentid) {
+    List<String> groupIds = new ArrayList<>();
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
+
+        String sql = "SELECT DISTINCT groupid " +
+                     "FROM grouplist " +
+                     "WHERE studentid = ? AND authority = 1 AND NOT groupid = ? ";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, studentid);
+        pstmt.setInt(2, studentid);
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            String groupId = rs.getString("groupid");
+            groupIds.add(groupId);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } 
+
+    return groupIds;
+}
+
+%>
+
+
+
+
+<html>
 <head> 
 
 <meta charset="UTF-8">
@@ -42,19 +82,38 @@
         <li class="nav-item">
           <a class="nav-link" href="#">뭐쓰지</a>
         </li>
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            고민..
+            숨기기
           </a>
           <ul class="dropdown-menu" data-bs-theme="light">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          
+            <li><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  할 일 1
+                </label>
+              </div></li>
+            <li><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                  할 일 2
+                </label>
+              </div></li>
+            <li><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled">
+                <label class="form-check-label" for="flexCheckDisabled">
+                  할 일 3
+                </label>
+              </div></li>
           </ul>
         </li>
+
+
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">여긴.. 학번이나 이름띄울까?없애도되고..</a>
+          <a class="nav-link disabled" aria-disabled="true">--</a>
         </li>
       </ul>
 
