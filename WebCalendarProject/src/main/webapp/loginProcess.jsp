@@ -34,7 +34,7 @@
         	
         	if (rs.next()) {
         		
-                out.println("<script>alert('로그인 성공'); location.href='main.jsp';</script>");
+                out.println("<script>alert('로그인 성공'); location.href='calendar.jsp';</script>");
         	
         	} else {
         		
