@@ -52,68 +52,97 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-    table { width:680px; text-align:center; }
-    th { width:100px; background-color:cyan; }
-    td { text-align:left; border:1px solid gray; }
-</style>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 20px;
+            padding-left: 40px;  /* Add left padding */
+            padding-right: 40px; /* Add right padding */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #dddddd;
+        }
+        th {
+            background-color: #0056b3;
+            color: white;
+            white-space: nowrap; /* Prevent line breaks */
+        }
+        td {
+            text-align: left;
+            color: #333333;
+        }
+        td.content {
+            white-space: normal; /* Allow line breaks for content */
+        }
+        .button-container {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .button-container button:hover {
+            background-color: #003f7f;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>공지사항 상세보기</h1>
+        <table>
+            <tr>
+                <th>제목</th>
+                <td><%=title %></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td><%=writer %></td>
+            </tr>
+            <tr>
+                <th>작성일시</th>
+                <td><%=regtime %></td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><%=content %></td>
+            </tr>
+        </table>
 
-<table>
-    <tr>
-        <th>제목</th>
-        <td><%=title %></td>
-    </tr>
-    
-    <tr>
-        <th>작성자</th>
-        <td><%=writer %></td>
-    </tr>
-    
-    <tr>
-        <th>작성일시</th>
-        <td><%=regtime %></td>
-    </tr>
-    
-    
-    <tr>
-        <th>내용</th>
-        <td><%=content %></td>
-    </tr>
-</table>
-
-<!-- 예시 입력값으로 대체 -->
-<!--
-<table>
-    <tr>
-        <th>제목</th>
-        <td>예시 제목</td>
-    </tr>
-    
-    <tr>
-        <th>작성자</th>
-        <td>예시 작성자</td>
-    </tr>
-    
-    <tr>
-        <th>작성일시</th>
-        <td>2024-06-16 12:00</td>
-    </tr>
-    
-    <tr>
-        <th>조회수</th>
-        <td>123</td>
-    </tr>
-    
-    <tr>
-        <th>내용</th>
-        <td>예시 내용입니다. 이 내용은 데이터베이스에서 가져온 내용 대신 표시되는 예시 텍스트입니다.</td>
-    </tr>
-</table>
--->
-<br>
-<input type="button" value="목록보기" onclick="location.href='notice_list.jsp'">
-
+        <div class="button-container">
+            <button onclick="window.history.back()">목록으로</button>
+        </div>
+    </div>
 </body>
 </html>
