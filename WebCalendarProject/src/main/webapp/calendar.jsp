@@ -127,7 +127,7 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                editable: true,
+                editable: false,
                 selectable: true,
                 selectOverlap: true,
                 dayMaxEvents: 5,
@@ -194,8 +194,7 @@
 
 <body style="background-color : #E8E8E8;">
 
-<jsp:include page="header.jsp"/>
-<jsp:include page="notice.jsp"/>
+<jsp:include page="notice_list.jsp"/>
 
 
 <div id='calendar'></div>
@@ -211,15 +210,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="eventModalLabel">상세정보</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
                             <label for="event-title" class="col-form-label">제목:</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" readonly>
                         </div>
                         <div class="form-group">
                             <label for="event-description" class="col-form-label">내용:</label>
@@ -227,11 +223,11 @@
                         </div>
                         <div class="form-group">
                             <label for="event-start-date" class="col-form-label">시작 날짜:</label>
-                            <input type="date" class="form-control" name="start-date">
+                            <input type="date" class="form-control" name="start-date" readonly>
                         </div>
                         <div class="form-group">
                             <label for="event-end-date" class="col-form-label">끝나는 날짜:</label>
-                            <input type="date" class="form-control" name="end-date">
+                            <input type="date" class="form-control" name="end-date" readonly>
                         </div>
                         <div class="form-group">
                             <label for="event-category" class="col-form-label">카테고리:</label>
@@ -240,9 +236,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary" id="saveEvent">저장</button>
-                    <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
+
                 </div>
             </div>
         </div>
