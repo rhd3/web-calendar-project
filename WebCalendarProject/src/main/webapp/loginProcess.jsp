@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
+%>
+
     
 <!DOCTYPE html>
 <html>
@@ -12,7 +22,7 @@
 	<%
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-	
+
 		String dbURL = "jdbc:mysql://localhost:3306/CalendarDB";
 		String dbUser = "root";
 		String dbPW = "1111";
@@ -23,35 +33,31 @@
         ResultSet rs = null;
         
         try {
-        	Class.forName("com.mysql.jdbc.Driver");
-        	conn = DriverManager.getConnection(dbURL, dbUser, dbPW);
-        	
-        	String sql = "SELECT * FROM infouser WHERE userId = ? AND userPw = ?";
-        	pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
-        	pstmt.setString(2, userPw);
-        	rs = pstmt.executeQuery();
-        	
-        	if (rs.next()) {
-        		String userNum = rs.getString("userNum");
-        		out.println("<script>alert('로그인 성공'); location.href='calendar.jsp?studentid=" + userNum + "';</script>");
-        	
-        	} else {
-        		
-                out.println("<script>alert('로그인 실패'); location.href='login.jsp';</script>");
+    Class.forName("com.mysql.jdbc.Driver");
+    conn = DriverManager.getConnection(dbURL, dbUser, dbPW);
 
-        	}     	
-        } catch(Exception e){
-        	
-        	e.printStackTrace();
-        	
-        } finally {
-        	
-        	if (rs != null) try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-        	if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-        	if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }      
-        
-        }
+    String sql = "SELECT studentid FROM infouser WHERE userId = ? AND userPw = ?";
+    pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1, userId);
+    pstmt.setString(2, userPw);
+    rs = pstmt.executeQuery();
+
+    if (rs.next()) {
+        studentid = rs.getInt("studentid");
+        session.setAttribute("studentid", studentid);
+        response.sendRedirect("calendar.jsp");
+    } else {
+        session.setAttribute("loginError", "로그인 실패");
+        response.sendRedirect("login.jsp");
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+    if (rs != null) try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+    if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+    if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+}
+
 
 	%>
 </body>

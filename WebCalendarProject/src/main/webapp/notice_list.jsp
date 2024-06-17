@@ -110,8 +110,10 @@
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from notice order by num desc");
             ) {
-                // 게시글 레코드가 남아있는 동안 반복하여 화면에 출력
-                while (rs.next()) {
+                // 게시글 레코드가 남아있는 동안 최대 5번 반복하여 화면에 출력
+                int count = 0;
+                while (rs.next() && count < 5) {
+                    count++;
         %>
         <tr>
             <td><%= rs.getInt("num") %></td>

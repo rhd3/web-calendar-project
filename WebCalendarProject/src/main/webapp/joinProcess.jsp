@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>

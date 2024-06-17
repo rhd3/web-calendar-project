@@ -3,26 +3,14 @@
 <%@ page import="java.sql.*, java.io.*, java.text.SimpleDateFormat, java.util.Date" %>
 
 
-<%!
-
-
-    //현재 시간 함수
-    public static String getCurrentTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return sdf.format(new Date());
-    }
-
-%>
-
-
-
 <%
  
     String writer   = request.getParameter("writer");
     String title    = request.getParameter("title");
     String content  = request.getParameter("content");
     String category = request.getParameter("category");
-    String regtime  = getCurrentTime();
+    String regtime  = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    int num = 0;
     
     Connection conn = null;
     PreparedStatement pstmt = null;

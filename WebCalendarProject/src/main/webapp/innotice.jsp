@@ -1,11 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
+%>
 
 <%!
-
-    //String studentid = request.getParameter("studentid");
-    int studentid = 2020011898;
 
     private List<String> getGroupIdsByStudentId(int studentid) {
         List<String> groupIds = new ArrayList<>();

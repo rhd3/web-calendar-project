@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
+<%@ page import="javax.servlet.http.*" %>
 
-<%!
-    int studentid = 2020011898;
-
-    private String userid;
-    private String username;
-    private String usertel;
+<%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
 %>
+
 
 <%!
     private String[] getuser(int studentid) {
@@ -194,6 +196,12 @@
         </table>
     </div>
 </div>
+
+
+
+
+
+
 
 <footer>
     <p>&copy; 2023 마이페이지. All rights reserved.</p>

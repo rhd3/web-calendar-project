@@ -1,17 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ page import="java.sql.*" %>
+<%@ page import="javax.servlet.http.*" %>
 
 <%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
+%>
 
-    int num = Integer.parseInt(request.getParameter("num"));
+<%
 
     // 게시글 데이터를 담을 변수 정의
     String writer = "";
     String title = "";
     String content = "";
     String regtime = "";
-
+    int num = Integer.parseInt(request.getParameter("num"));
     
     // 지정된 글 번호를 가진 레코드 읽기
     Class.forName("com.mysql.cj.jdbc.Driver");

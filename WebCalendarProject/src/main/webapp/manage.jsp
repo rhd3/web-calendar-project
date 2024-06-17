@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
+<%@ page import="javax.servlet.http.*" %>
 
-
-<%!
-    int studentid = 2020011898;    
+<%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
 %>
-
 
 
 

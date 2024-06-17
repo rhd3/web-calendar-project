@@ -1,4 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    HttpSession userSession = request.getSession();
+    int studentid = -1;
+    if (userSession.getAttribute("studentid") != null) {
+        studentid = (int)userSession.getAttribute("studentid");
+    }
+%>
+
 <html>
 <head>
    <style>
