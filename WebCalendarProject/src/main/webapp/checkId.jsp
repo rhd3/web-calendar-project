@@ -5,7 +5,7 @@
 
 <%
     String userId = request.getParameter("userId");
-    String dbURL = "jdbc:mysql://localhost:3306/userdb?useUnicode=true&characterEncoding=UTF-8";
+    String dbURL = "jdbc:mysql://localhost:3306/CalendarDB?useUnicode=true&characterEncoding=UTF-8";
     String dbUser = "root";
     String dbPW = "1111";
     Connection conn = null;
