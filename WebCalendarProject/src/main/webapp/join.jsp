@@ -63,9 +63,8 @@
         var userName = document.getElementById("userName").value;
         var userNum = document.getElementById("userNum").value;
         var userTel = document.getElementById("userTel").value;
-        var permission = document.getElementById("permission").value;
 
-        if(userId === '' || userPw === '' || userPwCheck === '' || userName === '' || userNum === '' || userTel === '' || permission === ''){
+        if(userId === '' || userPw === '' || userPwCheck === '' || userName === '' || userNum === '' || userTel === ''){
             alert('모든 필드를 채워주세요.');
             return false;
         }
@@ -89,13 +88,6 @@
         	<p><input id="userNum" name="userNum" type="text" placeholder="학번" required></p>
         	<p><input id="userTel" name="userTel" type="tel" placeholder="전화번호" onkeyup="checkPhoneNumber()" required></p>
         	<p id="phoneHelp"></p>
-			<p>
-        	    <select id="permission" name="permission">
-        	        <option value="">권한 선택</option>
-        	        <option value="학생">학생</option>
-        	        <option value="관리자">관리자</option>
-        	    </select>
-        	</p>
         	<p><button class="btn">회원가입</button></p>
         	<p><button class="btn" onclick="location.href='login.jsp'">로그인</button></p>
         	
