@@ -33,19 +33,17 @@
             <th class="title">제목</th>
             <th class="writer">작성자</th>
             <th class="regtime">작성일</th>
-            <th class="content">내용</th>
-            <th>조회수</th>
+            <th class="category">그룹</th>
         </tr>
-        <%--
-        데베 예시?
+
         <tr>
         	<% // 게시글 리스트 읽어오기
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (
                 Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/userdb?useUnicode=true&characterEncoding=UTF-8", "root", "1111");
+                        "jdbc:mysql://localhost:3306/calendardb", "root", "1111");
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from board order by num desc");
+                ResultSet rs = stmt.executeQuery("select * from notice order by num desc");
             ) {
                 // 게시글 레코드가 남아있는 동안 반복하여 화면에 출력
                 while (rs.next()) {
@@ -53,12 +51,14 @@
         <tr>
             <td><%= rs.getInt("num") %></td>
             <td style="text-align:left;">
-                <a href="list.jsp?num=<%= rs.getInt("num") %>"><%= rs.getString("title") %></a>
+                <a href="${contextPath}/view.jsp?num=<%= rs.getInt("num") %>">
+                    <%= rs.getString("title") %>
+                </a>
             </td>
             <td><%= rs.getString("writer") %></td>
             <td><%= rs.getString("regtime") %></td>
-            <td><%= rs.getString("content") %></td>
-            <td><%= rs.getInt("hits") %></td>
+            <td><%= rs.getString("category") %></td>
+     
         </tr>
         <%
                 }
@@ -66,17 +66,8 @@
                 e.printStackTrace();
             }
         %>
-        --%>
-        <!-- 게시글 리스트 예시 -->
-        <tr>
-            <td>1</td>
-            <td style="text-align:left;"><a href="view.jsp?num=1">Sample Title</a></td>
-            <td>Writer</td>
-            <td>2024-06-16</td>
-            <td>Sample content...</td>
-            <td>10</td>
-        </tr>
-        <!-- 반복할 게시글은 여기 추가 -->
+     
+       
     </table>
     <div class="button-container">
         <button onclick="location.href='${contextPath}/notice_list.jsp'">목록</button>

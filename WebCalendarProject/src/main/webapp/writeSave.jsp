@@ -1,18 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="java.sql.*, java.io.*" %>
+<%@ page import="java.sql.*, java.io.*, java.text.SimpleDateFormat, java.util.Date" %>
+
+
+<%!
+
+
+    //현재 시간 함수
+    public static String getCurrentTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(new Date());
+    }
+
+%>
+
+
 
 <%
-   
-String dbURL = "jdbc:mysql://localhost:3306/userdb?useUnicode=true&characterEncoding=UTF-8";
-String dbUser = "root";
-String dbPass = "1111";
-
  
-    String writer = request.getParameter("writer");
-    String title = request.getParameter("title");
-    String content = request.getParameter("content");
-
+    String writer   = request.getParameter("writer");
+    String title    = request.getParameter("title");
+    String content  = request.getParameter("content");
+    String category = request.getParameter("category");
+    String regtime  = getCurrentTime();
+    
     Connection conn = null;
     PreparedStatement pstmt = null;
 
@@ -20,14 +31,16 @@ String dbPass = "1111";
         // JDBC 드라이버 로드
         Class.forName("com.mysql.cj.jdbc.Driver");
         // 데이터베이스 연결
-        conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendarDB", "root", "1111");
 
         // SQL 쿼리 작성
-        String sql = "INSERT INTO posts (writer, title, content) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO notice (writer, title, content, category, regtime) VALUES (?, ?, ?, ?, ?)";
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, writer);
         pstmt.setString(2, title);
         pstmt.setString(3, content);
+        pstmt.setString(4, category);
+        pstmt.setString(5, regtime);
 
         // 쿼리 실행
         int result = pstmt.executeUpdate();

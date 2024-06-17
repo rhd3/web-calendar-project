@@ -1,5 +1,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ page import="java.sql.*, java.util.*, java.time.*" %>
+
+<%!
+
+    //String studentid = request.getParameter("studentid");
+    int studentid = 2020011898;
+
+   private List<String> getGroupIdsByStudentId(int studentid) {
+    List<String> groupIds = new ArrayList<>();
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
+
+        String sql = "SELECT DISTINCT groupid " +
+                     "FROM grouplist " +
+                     "WHERE studentid = ? AND authority = 1 AND NOT groupid = ? ";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, studentid);
+        pstmt.setInt(2, studentid);
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            String groupId = rs.getString("groupid");
+            groupIds.add(groupId);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } 
+
+    return groupIds;
+    
+}
+
+%>
+
+
 
 <html>
 <head>
@@ -14,7 +55,7 @@
             <form method="post" action="writeSave.jsp">
                 <div class="form-group">
                     <label>작성자</label> 
-                    <input class="form-control" name="writer" value="${successUser}" readonly>
+                    <input class="form-control" name="writer" >
                 </div>
                 <div class="form-group">
                     <label>제목</label> 
@@ -24,6 +65,20 @@
                     <label>내용</label>
                     <textarea class="form-control" rows="3" name="content"></textarea>
                 </div>  
+
+                <div class="form-group">
+                    <label for="event-category" class="col-form-label">카테고리:</label>
+                    <select class="form-control" name="category">
+                        <%
+                            List<String> groupIds = getGroupIdsByStudentId(studentid); 
+                            for (String groupId : groupIds) {
+                        %>
+                        <option value="<%= groupId %>"><%= groupId %></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>
             
                 <div class="mt-4">
                     <input type="submit" class="btn btn-primary" value="글 등록하기">

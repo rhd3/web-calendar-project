@@ -57,6 +57,16 @@
           <a class="nav-link disabled" aria-disabled="true">여긴.. 학번이나 이름띄울까?없애도되고..</a>
         </li>
       </ul>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          옵션
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">옵션1</a></li>
+          <li><a class="dropdown-item" href="#">옵션2</a></li>
+        </ul>
+      </div>
       <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
     </div>

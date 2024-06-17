@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `events`
+-- Table structure for table `notice`
 --
 
-DROP TABLE IF EXISTS `events`;
+DROP TABLE IF EXISTS `notice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `events` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `description` text,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
+CREATE TABLE `notice` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `writer` varchar(5) NOT NULL,
+  `title` varchar(45) NOT NULL,
+  `content` varchar(500) DEFAULT NULL,
   `category` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
+  `regtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `events`
+-- Dumping data for table `notice`
 --
 
-LOCK TABLES `events` WRITE;
-/*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (8,'124','3142123','2024-06-25','2024-06-29','NAN'),(9,'123','12314','2024-06-24','2024-06-27','2020011898'),(10,'124','3123','2024-06-27','2024-06-29','NAN'),(12,'1243','124123','2024-06-26','2024-06-26','JSP'),(14,'1423','1243','2024-06-26','2024-06-28','2020011898'),(15,'1235124','3145234','2024-06-13','2024-06-15','JSP'),(16,'12344','12345234','2024-06-11','2024-06-13','NAN'),(17,'ㅁㄶㅇㄹ','ㅁㄴㅇㄹ','2024-06-05','2024-06-05','personal'),(18,'123','assdf','2024-06-05','2024-06-05','2020011898'),(19,'ㅁㄴㅇㄹ','sdfasgsadf','2024-06-10','2024-06-10','JSP'),(20,'sadfasfd','sgdfasdf','2024-06-11','2024-06-11',''),(21,'asgdaf','asdf','2024-06-20','2024-06-20','JSP'),(22,'asgdf','agsdf','2024-06-12','2024-06-12','2020011898');
-/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+LOCK TABLES `notice` WRITE;
+/*!40000 ALTER TABLE `notice` DISABLE KEYS */;
+INSERT INTO `notice` VALUES (1,'ㅁㄴㅇㄹ','ㅁㄴㅇㄹ','ㄻㅁㄴㄹㅇ','JSP','2024-06-17 22:57:08');
+/*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -3,7 +3,7 @@
 
 <%!
 
-    //String studentId = request.getParameter("studentid");
+    //String studentid = request.getParameter("studentid");
 	int studentid = 2020011898;
 
 
@@ -376,7 +376,7 @@
                 <div class="form-group">
                     <label for="event-category" class="col-form-label">카테고리:</label>
                     <select class="form-control" name="category">
-                        <option value="<%= studentid %>">개인일정</option>
+                        <option value=<%= studentid %>>개인일정</option>
 
                         <%
                             List<String> groupIds = getGroupIdsByStudentId(studentid); // 학생 ID 변수 studentid 값 기준
