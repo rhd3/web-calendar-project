@@ -3,7 +3,7 @@
 <head>
     <style>
         .notice {
-        	position: relative;
+            position: relative;
             margin-left: 15%;
             width: 500px;
             height: 300px;
@@ -30,15 +30,17 @@
         .notice button:hover {
             background-color: #3E8DDC;
         }
-            .todo-container {
- 			position: relative;
+        .todo-container {
+            position: relative;
             margin-right: 15%;
             padding: 20px;
             width: 500px;
             height: 300px;
             font-size: 15px;
             background-color: white;
-            
+        }
+        #alert-message {
+            color: red;
         }
     </style>
 
