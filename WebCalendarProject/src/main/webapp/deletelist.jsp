@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ page import="java.sql.*, java.io.*" %>
 
 <%
@@ -25,13 +25,13 @@ String dbPass = "1111";
         int result = pstmt.executeUpdate();
 
         if (result > 0) {
-            out.println("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+            out.println("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
         } else {
-            out.println("»èÁ¦¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+            out.println("ì‚­ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
         }
     } catch (Exception e) {
         e.printStackTrace();
-        out.println("¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù: " + e.getMessage());
+        out.println("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤: " + e.getMessage());
     } finally {
         if (pstmt != null) {
             try {
