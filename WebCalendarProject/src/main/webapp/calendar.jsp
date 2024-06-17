@@ -212,8 +212,9 @@
 <body>
 
 <jsp:include page="header.jsp"/>
+<div style="padding-top: 5%;">
 <jsp:include page="notice.jsp" />
-<jsp:include page="list.jsp" />
+</div>
 
 <!-- <button type="button" class="btn btn-primary" onclick="location.href='manage.jsp'">관리자 페이지로 이동</button>  -->
 
