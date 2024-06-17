@@ -16,8 +16,11 @@
         }
 
         .notice {
+        	display : relative;
             width: 30%;
             padding: 20px;
+            margin-top : 2%;
+			margin-left : 21%;
             background-color: #ffffff;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
