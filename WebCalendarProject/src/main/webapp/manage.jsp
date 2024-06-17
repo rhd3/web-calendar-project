@@ -2,6 +2,11 @@
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 
 <%!
+
+    //String studentId = request.getParameter("studentid");
+	int studentid = 2020011898;
+
+
     public class Event {
         private int id;
         private String title;
@@ -44,37 +49,74 @@
         }
     }
 
-    private List<Event> getEvents() {
+    private List<Event> getEvents(int studentid) {
         List<Event> eventList = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
-            Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM events";
-            ResultSet rs = stmt.executeQuery(sql);
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String title = rs.getString("title");
-                String description = rs.getString("description");
-                LocalDate startDate = rs.getDate("start_date").toLocalDate();
-                LocalDate endDate = rs.getDate("end_date").toLocalDate();
-                String category = rs.getString("category");
+        String sql = "select * from events where category IN (select groupid from grouplist where studentid = ? and authority = 1 )";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, studentid);
 
-                Event event = new Event(id, title, description, startDate, endDate, category);
-                eventList.add(event);
-            }
+        ResultSet rs = pstmt.executeQuery();
 
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String title = rs.getString("title");
+            String description = rs.getString("description");
+            LocalDate startDate = rs.getDate("start_date").toLocalDate();
+            LocalDate endDate = rs.getDate("end_date").toLocalDate();
+            String category = rs.getString("category");
+
+            Event event = new Event(id, title, description, startDate, endDate, category);
+            eventList.add(event);
         }
 
-        return eventList;
+        rs.close();
+        pstmt.close();
+        conn.close();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return eventList;
+}
+
+   private List<String> getGroupIdsByStudentId(int studentid) {
+    List<String> groupIds = new ArrayList<>();
+
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
+
+        String sql = "SELECT DISTINCT groupid " +
+                     "FROM grouplist " +
+                     "WHERE studentid = ? AND authority = 1 AND NOT groupid = ? ";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, studentid);
+        pstmt.setInt(2, studentid);
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            String groupId = rs.getString("groupid");
+            groupIds.add(groupId);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } 
+
+    return groupIds;
+}
+
+
+
+
 %>
 
 <!DOCTYPE html>
@@ -132,7 +174,7 @@
                 displayEventTime: false,
 
                 events: [
-                    <% List<Event> events = getEvents();
+                    <% List<Event> events = getEvents(studentid);
                        for (Event event : events) { %>
                     {
                         id: <%= event.getId() %>,
@@ -141,16 +183,11 @@
                         end: '<%= event.getEndDate() %>',
                         description: '<%= event.getDescription() %>',
                         category: '<%= event.getCategory() %>',
-                        <% if (event.getCategory().equals("personal")) { %>
+
+                     
                         backgroundColor: 'yellow',
                         textColor: 'black'
-                        <% } else if (event.getCategory().equals("course")) { %>
-                        backgroundColor: 'blue',
-                        textColor: 'white'
-                        <% } else if (event.getCategory().equals("club")) { %>
-                        backgroundColor: 'green',
-                        textColor: 'white'
-                        <% } %>
+                        
                     },
                     <% } %>
                 ],
@@ -168,9 +205,7 @@
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
                         var category = $('#eventModal').find('select[name="category"]').val();
-                        var studentid = 123;  // 기본 studentid, 필요에 따라 수정
-                        var groupid = $('#eventModal').find('select[name="category"]').val();      // 기본 groupid, 필요에 따라 수정
-                        if (title && startDate && endDate) {
+                          if (title && startDate && endDate) {
                             $.ajax({
                                 url: 'addEvent.jsp',
                                 method: 'POST',
@@ -180,8 +215,8 @@
                                     end_date: endDate,
                                     description: description,
                                     category: category,
-                                    studentid: studentid,
-                                    groupid: groupid
+                                   
+                                    
                                 },
                                 success: function (response) {
                                     calendar.addEvent({
@@ -190,8 +225,7 @@
                                         end: endDate,
                                         description: description,
                                         category: category,
-                                        studentid: studentid,
-                                        groupid: groupid
+                                       
                                     });
                                     $('#eventModal').modal('hide');
                                 }
@@ -213,8 +247,8 @@
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
                         var category = $('#eventModal').find('select[name="category"]').val();
-                        const studentid = 123;
-                        const groupid = 1;
+                        
+                    
 
                         if (title && startDate && endDate) {
                             $.ajax({
@@ -226,8 +260,8 @@
                                     end_date: endDate,
                                     description: description,
                                     category: category,
-                                    studentid: studentid,
-                                    groupid: groupid
+                               
+                                
                                 },
                                 success: function (response) {
                                     calendar.addEvent({
@@ -236,8 +270,8 @@
                                         end: endDate,
                                         description: description,
                                         category: category,
-                                        studentid: studentid,
-                                        groupid: groupid
+                                       
+                                     
                                     });
                                     $('#eventModal').modal('hide');
                                 }
@@ -337,14 +371,27 @@
                         <label for="event-end-date" class="col-form-label">종료 날짜:</label>
                         <input type="text" class="form-control" name="end-date">
                     </div>
-                    <div class="form-group">
-                        <label for="event-category" class="col-form-label">카테고리:</label>
-                        <select class="form-control" name="category">
-                            <option value="personal">개인일정</option>
-                            <option value="club">동아리일정</option>
-                            <option value="course">과목</option>
-                        </select>
-                    </div>
+                       
+                   
+                <div class="form-group">
+                    <label for="event-category" class="col-form-label">카테고리:</label>
+                    <select class="form-control" name="category">
+                        <option value="<%= studentid %>">개인일정</option>
+
+                        <%
+                            List<String> groupIds = getGroupIdsByStudentId(studentid); // 학생 ID 변수 studentid 값 기준
+                            for (String groupId : groupIds) {
+                        %>
+                        <option value="<%= groupId %>"><%= groupId %></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>
+
+
+                
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                         <button type="button" class="btn btn-primary" id="saveEvent">저장</button>

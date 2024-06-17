@@ -3,8 +3,8 @@
 
 <%! 
     //String studentId = request.getParameter("studentid");
-	int studentid = 123;
-	int groupid = 1;
+	int studentid = 2020011898;
+
 	
     public class Event {
         private int id;
@@ -50,17 +50,17 @@
 
     // Event VO를 반환해서 Calendar에서 활용
     // 필터링 구현하실 때 이 메소드를 수정해서 필터링된 이벤트목록을 반환
-    private List<Event> getEvents(int studentid, int groupid) {
+    private List<Event> getEvents(int studentid) {
     List<Event> eventList = new ArrayList<>();
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
 
-        String sql = "SELECT * FROM events WHERE studentid = ? OR groupid = ?";
+        //String sql = "SELECT * FROM events WHERE studentid = ? OR groupid = ?";
+        String sql = "select * from events where category IN (select groupid from grouplist where studentid = ? )";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, studentid);
-        pstmt.setInt(2, groupid);
 
         ResultSet rs = pstmt.executeQuery();
 
@@ -151,7 +151,7 @@
                 // 필터링을 구현할 때, getEvents() 함수에서 필터링되게
            
                 events: [
-                    <% List<Event> events = getEvents(studentid,groupid);
+                    <% List<Event> events = getEvents(studentid);
                        for (Event event : events) { %>
                     {
                         id: <%= event.getId() %>,
@@ -159,6 +159,8 @@
                         start: '<%= event.getStartDate() %>',
                         end: '<%= event.getEndDate() %>',
                         description: '<%= event.getDescription() %>',
+                        category :  '<%= event.getCategory() %>',
+
                         <% if (event.getCategory().equals("personal")) { %>
                         backgroundColor: 'yellow',
                         textColor: 'black'
@@ -182,15 +184,18 @@
                     $('#eventModal').find('input[name="end-date"]').val(info.event.endStr || info.event.startStr);
                     $('#eventModal').find('input[name="title"]').val(info.event.title);
                     $('#eventModal').find('textarea[name="description"]').val(info.event.extendedProps.description);
+                    $('#eventModal').find('input[name="category"]').val(info.event.extendedProps.category);
                     $('#saveEvent').off('click').on('click', function () {
                         var title = $('#eventModal').find('input[name="title"]').val();
                         var startDate = $('#eventModal').find('input[name="start-date"]').val();
                         var endDate = $('#eventModal').find('input[name="end-date"]').val();
                         var description = $('#eventModal').find('textarea[name="description"]').val();
+                        var category = $('#eventModal').find('textarea[name="category"]').val();
                         if (title && startDate && endDate) {
                             info.event.setProp('title', title);
                             info.event.setDates(startDate, endDate);
                             info.event.setExtendedProp('description', description);
+                            info.event.setExtendedProp('category', category);
                             $('#eventModal').modal('hide');
                         }
                     });
@@ -248,6 +253,10 @@
                     <div class="form-group">
                         <label for="event-end-date" class="col-form-label">종료 날짜:</label>
                         <input type="text" class="form-control" name="end-date" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-category" class="col-form-label">카테고리:</label>
+                        <input type="text" class="form-control" name="category" readonly>
                     </div>
                 </form>
             </div>
