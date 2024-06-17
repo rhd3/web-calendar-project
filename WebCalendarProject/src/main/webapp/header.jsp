@@ -12,6 +12,14 @@
 
 <title>학사 일정</title>
 
+<style>
+  .custom-link {
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+</style>
+
 </head>
 
 <body>
@@ -28,7 +36,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+      	<li class="nav-item">
+      		<a class="nav-link active " aria-current="page" href='calendar.jsp'">캘린더</a>
+    	</li>
         <li class="nav-item">
           <a class="nav-link" href="#">뭐쓰지</a>
         </li>
@@ -47,12 +57,8 @@
           <a class="nav-link disabled" aria-disabled="true">여긴.. 학번이나 이름띄울까?없애도되고..</a>
         </li>
       </ul>
-     <a style="margin-right:20px">
-     	<button type="button" class="btn btn-warning" onclick="location.href='manage.jsp'">일정등록</button>
-     </a>
-     <a>
-     	<button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
-     </a>
+      <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
+      <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
     </div>
   </div>
 </nav>

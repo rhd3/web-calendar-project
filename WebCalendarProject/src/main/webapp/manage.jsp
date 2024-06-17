@@ -304,6 +304,8 @@
     </script>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+
 <div id='calendar'></div>
 
 <!-- 모달 창 -->
