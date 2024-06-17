@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ page import="java.sql.*, java.io.*" %>
 
 <%
@@ -17,29 +17,29 @@ String dbPass = "1111";
     PreparedStatement pstmt = null;
 
     try {
-        // JDBC µå¶óÀÌ¹ö ·Îµå
+        // JDBC ë“œë¼ì´ë²„ ë¡œë“œ
         Class.forName("com.mysql.cj.jdbc.Driver");
-        // µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+        // ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
         conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
 
-        // SQL Äõ¸® ÀÛ¼º
+        // SQL ì¿¼ë¦¬ ì‘ì„±
         String sql = "INSERT INTO posts (writer, title, content) VALUES (?, ?, ?)";
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, writer);
         pstmt.setString(2, title);
         pstmt.setString(3, content);
 
-        // Äõ¸® ½ÇÇà
+        // ì¿¼ë¦¬ ì‹¤í–‰
         int result = pstmt.executeUpdate();
 
         if (result > 0) {
-            out.println("<script>alert('°Ô½Ã¹°ÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.'); location.href='notice_list.jsp';</script>");
+            out.println("<script>alert('ê²Œì‹œë¬¼ì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.'); location.href='notice_list.jsp';</script>");
         } else {
-            out.println("<script>alert('°Ô½Ã¹° ÀúÀå¿¡ ½ÇÆĞÇß½À´Ï´Ù.'); history.back();</script>");
+            out.println("<script>alert('ê²Œì‹œë¬¼ ì €ì¥ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.'); history.back();</script>");
         }
     } catch (Exception e) {
         e.printStackTrace();
-        out.println("<script>alert('¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.'); history.back();</script>");
+        out.println("<script>alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.'); history.back();</script>");
     } finally {
         try {
             if (pstmt != null) pstmt.close();
