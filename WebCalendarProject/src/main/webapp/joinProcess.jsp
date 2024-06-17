@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<% request.setCharacterEncoding("EUC-KR"); %>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
