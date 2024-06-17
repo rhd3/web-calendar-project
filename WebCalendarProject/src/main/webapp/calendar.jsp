@@ -216,7 +216,6 @@
 <jsp:include page="notice.jsp" />
 </div>
 
-<!-- <button type="button" class="btn btn-primary" onclick="location.href='manage.jsp'">관리자 페이지로 이동</button>  -->
 
 <div id='calendar'></div>
     
