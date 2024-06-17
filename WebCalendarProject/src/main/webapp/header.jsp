@@ -93,9 +93,10 @@ int studentid = 2020011898;
           <a class="nav-link disabled" aria-disabled="true">--</a>
         </li>
       </ul>
+      <button type="button" class="btn btn-primary" onclick="location.href='ran.jsp'">메뉴추천</button>
       <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
-      
+       
     </div>
   </div>
 </nav>
