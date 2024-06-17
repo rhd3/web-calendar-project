@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `notice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `notice` (
-  `num` int NOT NULL AUTO_INCREMENT,
+  `num` int DEFAULT NULL,
   `writer` varchar(5) NOT NULL,
   `title` varchar(45) NOT NULL,
-  `content` varchar(500) DEFAULT NULL,
+  `content` varchar(500) NOT NULL,
   `category` varchar(20) DEFAULT NULL,
   `regtime` datetime DEFAULT NULL,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`content`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `notice` (
 
 LOCK TABLES `notice` WRITE;
 /*!40000 ALTER TABLE `notice` DISABLE KEYS */;
-INSERT INTO `notice` VALUES (1,'ㅁㄴㅇㄹ','ㅁㄴㅇㄹ','ㄻㅁㄴㄹㅇ','JSP','2024-06-17 22:57:08');
+INSERT INTO `notice` VALUES (NULL,'sdf','asgdf','agsdf','JSP','2024-06-18 07:06:50'),(1,'ㅁㄴㅇㄹ','ㅁㄴㅇㄹ','ㄻㅁㄴㄹㅇ','JSP','2024-06-17 22:57:08'),(2,'ㅁㄶㅇㄹ','ㅁㄴㅇㄻㄴㄹ','ㅁㄴㅇㄹㄴㅁㅇ','JSP','2024-06-18 05:24:55');
 /*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-17 23:25:41
+-- Dump completed on 2024-06-18  7:14:29

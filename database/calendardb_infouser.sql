@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: calendardb
+-- Host: 127.0.0.1    Database: calendardb
 -- ------------------------------------------------------
 -- Server version	8.0.37
 
@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `infouser`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `infouser` (
-  `userId` varchar(20) NOT NULL,
-  `userPw` varchar(20) NOT NULL,
-  `userName` varchar(20) DEFAULT NULL,
-  `userNum` varchar(20) NOT NULL,
-  `userTel` varchar(20) NOT NULL,
+  `userId` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userPw` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userName` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `studentid` int NOT NULL,
+  `userTel` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `infouser` (
 
 LOCK TABLES `infouser` WRITE;
 /*!40000 ALTER TABLE `infouser` DISABLE KEYS */;
-INSERT INTO `infouser` VALUES ('kim','kim','kim','23','23');
+INSERT INTO `infouser` VALUES ('kim','kim','kim',23,'23'),('minn0701','mm701365!','권혁민',2020011898,'01022727013');
 /*!40000 ALTER TABLE `infouser` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-18  0:20:22
+-- Dump completed on 2024-06-18  7:14:29
