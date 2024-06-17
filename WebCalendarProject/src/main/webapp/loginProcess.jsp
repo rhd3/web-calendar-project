@@ -33,8 +33,8 @@
         	rs = pstmt.executeQuery();
         	
         	if (rs.next()) {
-        		
-                out.println("<script>alert('로그인 성공'); location.href='calendar.jsp';</script>");
+        		String userNum = rs.getString("userNum");
+        		out.println("<script>alert('로그인 성공'); location.href='calendar.jsp?studentid=" + userNum + "';</script>");
         	
         	} else {
         		
