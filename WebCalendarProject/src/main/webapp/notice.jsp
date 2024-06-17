@@ -11,6 +11,7 @@
             background-color: white; 
         }
         .notice-header {
+        
             height: 25%;
             background-color: #328DDC;
             display: flex;

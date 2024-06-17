@@ -215,7 +215,7 @@
 
 
 
-<body>
+<body style="background-color : #E8E8E8;">
 
 <jsp:include page="header.jsp"/>
 <div style="padding-top: 5%;">

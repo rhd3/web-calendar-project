@@ -337,7 +337,7 @@
         });
     </script>
 </head>
-<body>
+<body style="background-color : #E8E8E8;">
 
 <jsp:include page="header.jsp"/>
 
