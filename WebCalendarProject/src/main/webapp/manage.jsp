@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 
+
+<%
+    int studentid;
+    String studentidParam = request.getParameter("studentid");
+    if (studentidParam != null && !studentidParam.isEmpty()) {
+        try {
+            studentid = Integer.parseInt(studentidParam);
+            // 이제 studentid 변수를 사용할 수 있습니다.
+        } catch (NumberFormatException e) {
+            // studentidParam이 숫자로 변환될 수 없는 경우 처리
+        }
+    } else {
+        // studentid 파라미터가 전달되지 않은 경우 처리
+    }
+%>
+
+
+
+
 <%!
-
-    //String studentid = request.getParameter("studentid");
-	int studentid = 2020011898;
-
-
     public class Event {
         private int id;
         private String title;
@@ -84,7 +98,7 @@
     return eventList;
 }
 
-   private List<String> getGroupIdsByStudentId(int studentid) {
+   private List<String> getGroupIdsByStudentId(Integer.parseInt(request.getParameter("studentid"))) {
     List<String> groupIds = new ArrayList<>();
 
     Connection conn = null;
@@ -376,17 +390,13 @@
                 <div class="form-group">
                     <label for="event-category" class="col-form-label">카테고리:</label>
                     <select class="form-control" name="category">
-<<<<<<< HEAD
                         <option value=<%= studentid %>>개인일정</option>
-=======
-                        <option value=<%= studentid %>>개인일정</option> 
->>>>>>> f294b1dfc9002b98d063ea3aa6f6b16548eef922
 
                         <%
                             List<String> groupIds = getGroupIdsByStudentId(studentid); // 학생 ID 변수 studentid 값 기준
                             for (String groupId : groupIds) {
                         %>
-                        <option value="<%= groupId %>"><%= groupId %></option>
+                        <option value=<%= groupId %>><%= groupId %></option>
                         <%
                             }
                         %>
