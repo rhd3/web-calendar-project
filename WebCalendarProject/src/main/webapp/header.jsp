@@ -39,12 +39,8 @@ int studentid = 2020011898;
 
 %>
 
-
-
-
 <html>
 <head> 
-
 <meta charset="UTF-8">
 <script src="./resource/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./resource/css/bootstrap.min.css"/>
@@ -59,6 +55,12 @@ int studentid = 2020011898;
     margin-right: 10px;
   }
 </style>
+
+<script>
+function redirectToMenu() {
+    window.location.href = "https://www.cju.ac.kr/www/selectTnRstrntMenuListU.do?key=5117";
+}
+</script>
 
 </head>
 
@@ -80,13 +82,11 @@ int studentid = 2020011898;
           <a class="nav-link custom-link" aria-current="page" href='calendar.jsp'>캘린더</a>
         </li>
 
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             숨기기
           </a>
           <ul class="dropdown-menu" data-bs-theme="light">
-          
             <li><div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
@@ -108,15 +108,14 @@ int studentid = 2020011898;
           </ul>
         </li>
 
-
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">--</a>
         </li>
       </ul>
-
-      
+<button type="button" class="btn btn-info" onclick="redirectToMenu()">학식 메뉴</button>
       <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
+      
     </div>
   </div>
 </nav>
