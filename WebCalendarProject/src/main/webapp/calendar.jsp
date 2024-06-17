@@ -204,6 +204,7 @@
 
 
 <body>
+<jsp:include page="header.jsp"/>
 <jsp:include page="notice.jsp" />
 <jsp:include page="list.jsp" />
 
