@@ -194,7 +194,7 @@
 <body style="background-color : #E8E8E8;">
 
 
-
+<jsp:include page="header.jsp"/>
 <jsp:include page="notice.jsp"/>
 
 
