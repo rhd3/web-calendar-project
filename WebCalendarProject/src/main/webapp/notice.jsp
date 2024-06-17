@@ -3,14 +3,14 @@
 <head>
     <style>
         div.notice {
-            top: 330px;
-            left: 130px;
-            position: relative;
+        	position: relative;
+            top: 35%;
+            left: 25%;
             margin: 10px;
             padding: 20px;
+		    background-image: linear-gradient(to top, #E7ECF2 70%,#328DDC 30%);
             width: 500px;
             height: 300px;
-            background-color: #3E8DDC;
             font-size: 20px;
             color: white;
             /*border: 2px solid;*/
@@ -22,14 +22,14 @@
         }
         .notice button {
             padding: 5px 10px;
-            font-size: 18px;
-            background-color: #ffffff;
-            color: #3E8DDC;
+            font-size: 20px;
+            background-color: #3E8DDC;
+            color: #FFFFFF;
             border: none;
             cursor: pointer;
         }
         .notice button:hover {
-            background-color: #f0f0f0;
+            background-color: #3E8DDC;
         }
     </style>
 </head>

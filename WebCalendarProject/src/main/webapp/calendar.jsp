@@ -129,6 +129,12 @@
         .fc-day-sat a {
             color: blue;
         }
+        
+        .container {
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px;
+        }
     </style>
     <script>
         // DOM이 로드되면 FullCalendar 초기화
@@ -204,11 +210,13 @@
 
 
 <body>
+
 <jsp:include page="header.jsp"/>
 <jsp:include page="notice.jsp" />
 <jsp:include page="list.jsp" />
 
-<button type="button" class="btn btn-primary" onclick="location.href='manage.jsp'">관리자 페이지로 이동</button>
+<!-- <button type="button" class="btn btn-primary" onclick="location.href='manage.jsp'">관리자 페이지로 이동</button>  -->
+
 <div id='calendar'></div>
     
 <!-- 모달 창 -->

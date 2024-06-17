@@ -4,14 +4,14 @@
 <head>
     <style>
         .todo-container {
-            top: 20px;
-            left: 700px;
-            position: relative;
+ 			position: relative;
+            top: 25%;
+            left: 55%;
             margin: 10px;
             padding: 20px;
             width: 500px;
             height: 300px;
-            background-color: #3E8DDC;
+		    background-image: linear-gradient(to top, #E7ECF2 80%,#328DDC 30%);
             font-size: 15px;
             color: white;
             border: 2px bold;
@@ -23,7 +23,6 @@
             const addButton = document.querySelector('#add-button');
             const todoList = document.querySelector('#todo-list');
             const alert = document.querySelector('#alert-message'); // Use specific ID to avoid conflicts
-
             const addTodo = () => {
                 if (input.value !== '') {
                     const item = document.createElement('div');

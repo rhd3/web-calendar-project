@@ -10,7 +10,7 @@
 <title>학사 일정</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #00479D;">
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #304C79;">
   <div class="container-fluid">
   	<a class="navbar-brand" href="#">
       <img src="./resource/images/title-logo.svg" alt="Bootstrap" width="30" height="24">
@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">여기에</a>
+          <a class="nav-link active" aria-current="page" href='manage.jsp'">관리자</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">뭐쓰지</a>
