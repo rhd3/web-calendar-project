@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
-<%@ page import="javax.servlet.http.*" %>
+<!DOCTYPE html>
+
 
 <%
     HttpSession userSession = request.getSession();
@@ -10,10 +11,10 @@
     }
 %>
 
-<!DOCTYPE html>
 
 <%!
-
+ 
+ 
   private List<String> getGroupIdsByStudentId(int studentid) {
     List<String> groupIds = new ArrayList<>();
 
@@ -46,10 +47,8 @@
 
 %>
 
-
 <html>
 <head> 
-
 <meta charset="UTF-8">
 <script src="./resource/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./resource/css/bootstrap.min.css"/>
@@ -81,65 +80,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      	<li class="nav-item">
-      		<a class="nav-link active " aria-current="page" href='calendar.jsp'">캘린더</a>
-    	</li>
         <li class="nav-item">
-          <a class="nav-link" href="#">뭐쓰지</a>
+          <a class="nav-link custom-link" aria-current="page" href='calendar.jsp'>캘린더</a>
         </li>
 
-
-        <li class="nav-item dropdown">
+         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            숨기기
+            교내 홈페이지
           </a>
           <ul class="dropdown-menu" data-bs-theme="light">
-          
-            <li><div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  할 일 1
-                </label>
-              </div></li>
-            <li><div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                  할 일 2
-                </label>
-              </div></li>
-            <li><div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled">
-                <label class="form-check-label" for="flexCheckDisabled">
-                  할 일 3
-                </label>
-              </div></li>
+          	<li><a class="dropdown-item" href="https://www.cju.ac.kr/">청주대학교</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://portal.cju.ac.kr/">포털시스템</a></li>
+            <li><a class="dropdown-item" href="https://hive.cju.ac.kr/">에델바이스</a></li>
+            <li><a class="dropdown-item" href="https://www.cju.ac.kr/www/selectTnRstrntMenuListU.do?key=5117">학식 메뉴</a></li>
           </ul>
         </li>
-
-
+        
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">--</a>
         </li>
       </ul>
-<<<<<<< HEAD
-
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          옵션
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="#">옵션1</a></li>
-          <li><a class="dropdown-item" href="#">옵션2</a></li>
-        </ul>
-      </div>
-      <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
-      <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
-=======
       <button type="button" class="btn btn-primary" onclick="location.href='ran.jsp'">메뉴추천</button>
       <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
-       
->>>>>>> 665c1a6fadbb46af9bb16129c7088fde7bd723da
+      
     </div>
   </div>
 </nav>
