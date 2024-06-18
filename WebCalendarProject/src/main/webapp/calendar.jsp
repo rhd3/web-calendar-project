@@ -2,6 +2,7 @@
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 <%@ page import="javax.servlet.http.*" %>
 
+
 <%
     HttpSession userSession = request.getSession();
     int studentid = -1;
@@ -89,6 +90,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
         #calendar {
             max-width: 1100px;
@@ -196,6 +198,7 @@
 </head>
 
 <body style="background-color : #E8E8E8;">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 <jsp:include page="notice_list.jsp"/>
 
@@ -207,43 +210,44 @@
 
 
 
-    <!-- 모달 창 -->
-    <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventModalLabel">상세정보</h5>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="event-title" class="col-form-label">제목:</label>
-                            <input type="text" class="form-control" name="title" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="event-description" class="col-form-label">내용:</label>
-                            <textarea class="form-control" name="description" readonly></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="event-start-date" class="col-form-label">시작 날짜:</label>
-                            <input type="date" class="form-control" name="start-date" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="event-end-date" class="col-form-label">끝나는 날짜:</label>
-                            <input type="date" class="form-control" name="end-date" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="event-category" class="col-form-label">카테고리:</label>
-                            <input type="text" class="form-control" name="category" readonly>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                </div>
+<!-- 모달 창 -->
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="eventModalLabel">상세정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="event-title" class="form-label fw-bold">제목</label>
+                        <p class="form-control-plaintext">제목 내용</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-description" class="form-label fw-bold">내용</label>
+                        <p class="form-control-plaintext">내용 내용</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-start-date" class="form-label fw-bold">시작 날짜</label>
+                        <p class="form-control-plaintext">2023-06-01</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-end-date" class="form-label fw-bold">끝나는 날짜</label>
+                        <p class="form-control-plaintext">2023-06-30</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-category" class="form-label fw-bold">카테고리</label>
+                        <p class="form-control-plaintext">회의</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
             </div>
         </div>
     </div>
+</div>
 
 
 <jsp:include page="footer.jsp" />
