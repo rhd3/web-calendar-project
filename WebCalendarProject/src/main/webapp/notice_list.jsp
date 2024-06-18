@@ -138,7 +138,6 @@
     </table>
     <div class="button-container">
         <button onclick="location.href='${contextPath}/innotice.jsp'">글 쓰기</button>
-        <button onclick="location.href='calendar.jsp'">닫기</button>
         
     </div>
 </body>
