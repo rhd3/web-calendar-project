@@ -47,8 +47,7 @@
         session.setAttribute("studentid", studentid);
         response.sendRedirect("calendar.jsp");
     } else {
-        session.setAttribute("loginError", "로그인 실패");
-        response.sendRedirect("login.jsp");
+    	out.println("<script>alert('로그인 실패'); location.href='login.jsp';</script>");
     }
 } catch (Exception e) {
     e.printStackTrace();
