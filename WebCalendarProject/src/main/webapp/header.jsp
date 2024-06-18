@@ -2,7 +2,6 @@
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 <!DOCTYPE html>
 
-
 <%
     HttpSession userSession = request.getSession();
     int studentid = -1;
@@ -11,10 +10,7 @@
     }
 %>
 
-
 <%!
- 
- 
   private List<String> getGroupIdsByStudentId(int studentid) {
     List<String> groupIds = new ArrayList<>();
 
@@ -44,7 +40,6 @@
 
     return groupIds;
 }
-
 %>
 
 <html>
@@ -58,10 +53,15 @@
 
 <style>
   .custom-link {
-    color: white;
+    color: white; 
     font-weight: bold;
     margin-right: 10px;
   }
+  /* 추가적인 스타일링 */
+  .navbar-nav .nav-link {
+    color: white; 
+  }
+  
 </style>
 
 </head>
@@ -72,7 +72,7 @@
   <div class="container-fluid">
   	<a class="navbar-brand" href="#">
       <img src="./resource/images/title-logo.svg" alt="Bootstrap" width="30" height="24">
-      학사일정
+      <span style="color: white;">학사일정</span> <!-- 글자 색을 검정색으로 변경 -->
     </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
