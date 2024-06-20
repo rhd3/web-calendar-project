@@ -68,12 +68,13 @@
 
   .nav-link:hover {
     color: white;
+    border-radius: 10px;
     background-color: blue !important;
   }
 
   .sidebar {
     width: 280px;
-    background-color: #304C79;
+    background-color: #243c62;
     color: white;
     position: fixed;
     top: 0;
@@ -84,7 +85,10 @@
     z-index: 1050;
     border-radius: 10px;
   }
-
+  .sidebar h3 {
+    user-select: none; /* 드래그 방지 속성 */
+  }
+  
   .sidebar.show {
     display: block;
   }
@@ -115,7 +119,7 @@
     cursor: pointer;
   }
   .navbar-brand img, .sidebar-toggle-btn svg {
-    margin-top: -5px; /* 로고 아이콘과 사이드바 토글 아이콘을 5px 위로 올림 */
+    margin-top: -8px; /* 로고 아이콘과 사이드바 토글 아이콘을 5px 위로 올림 */
   }
   .navbar-text {
     margin-left: 10px; /* 사용자 접속중 텍스트를 왼쪽으로 이동 */
