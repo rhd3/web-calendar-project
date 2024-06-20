@@ -92,11 +92,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
-        /* 일정 캘린더의 가로 너비를 1100px로 설정하고 가운데 정렬 */
+    
+     .fc .fc-scroller {
+            overflow: hidden !important;
+        }
         #calendar {
             max-width: 1100px;
-            margin: 40px auto;
-          
+            height: 900px; /* 높이 설정을 늘림 */
+            margin: 0 auto; /* 상단에 위치하게 하기 위해 margin-top 제거 */
+            overflow: hidden;
+        }
+
+        /* 헤더와 날짜 섹션을 위로 이동 */
+        .fc-col-header, .fc-scrollgrid-section-body {
+            margin-top: 0px;
         }
 
         /* 요일 헤더의 텍스트 데코레이션(밑줄)을 제거 */
@@ -118,10 +127,10 @@
         .fc-day-sun a {
             color: red; /* 일요일의 텍스트 색상을 빨강으로 변경 */
         }
-
-        .fc-day-sat .fc-col-header-cell-cushion,
+       
+      .fc-day-sat  .fc-col-header-cell-cushion,
         .fc-day-sat a {
-            color: white; /* 토요일의 텍스트 색상을 파란색으로 변경 */
+            color: skyblue; /* 토요일의 텍스트 색상을 파란색으로 변경 */
         }
         
         /* 컨테이너의 표시 방식을 수평으로 정렬하고 10px의 여백을 주도록 설정 */
