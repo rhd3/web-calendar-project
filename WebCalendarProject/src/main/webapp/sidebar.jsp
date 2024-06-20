@@ -100,16 +100,6 @@
         .navbar-toggler {
             border-color: white;
         }
-
-		/* 드롭다운 메뉴 아이템 색상 스타일 */
-        .dropdown-menu .dropdown-item {
-            color: white !important;
-        }
-
-        /* 드롭다운 메뉴 배경색 */
-        .dropdown-menu {
-            background-color: #304C79 !important;
-        }
     </style>
 
 </head>
