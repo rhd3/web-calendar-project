@@ -102,19 +102,22 @@
         </tr>
 
         <tr>
-        	<% // 게시글 리스트 읽어오기
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            try (
-                Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/calendardb", "root", "1111");
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from notice order by num desc");
-            ) {
-                // 게시글 레코드가 남아있는 동안 최대 5번 반복하여 화면에 출력
-                int count = 0;
-                while (rs.next() && count < 5) {
-                    count++;
-        %>
+<% // 게시글 리스트 읽어오기
+int studentid = (Integer)session.getAttribute("studentid");
+
+try (
+    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendardb", "root", "1111");
+    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notice WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ? ) ORDER BY num DESC");
+) {
+    stmt.setInt(1, studentid);
+    ResultSet rs = stmt.executeQuery();
+
+    // 게시글 레코드가 남아있는 동안 최대 5번 반복하여 화면에 출력
+    int count = 0;
+    while (rs.next() && count < 5) {
+        count++;
+%>
+
         <tr>
             <td><%= rs.getInt("num") %></td>
             <td style="text-align:left;">

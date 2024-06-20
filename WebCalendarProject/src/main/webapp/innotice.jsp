@@ -13,7 +13,7 @@
 
 <%!
 
-    private List<String> getGroupIdsByStudentId(int studentid) {
+    private List<String> getGroupIdsByStudentId(int studentid) throws SQLException {
         List<String> groupIds = new ArrayList<>();
 
         Connection conn = null;
@@ -37,7 +37,7 @@
                 groupIds.add(groupId);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new SQLException("Failed to get group IDs by student ID", e);
         } 
 
         return groupIds;
