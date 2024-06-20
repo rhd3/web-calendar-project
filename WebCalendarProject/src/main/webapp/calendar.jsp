@@ -92,15 +92,19 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
+        /* 일정 캘린더의 가로 너비를 1100px로 설정하고 가운데 정렬 */
         #calendar {
             max-width: 1100px;
             margin: 40px auto;
+          
         }
 
+        /* 요일 헤더의 텍스트 데코레이션(밑줄)을 제거 */
         .fc-col-header-cell-cushion, .fc-daygrid-day-number {
             text-decoration: none;
         }
 
+        /* 토요일과 일요일의 텍스트 색상을 변경 */
         .fc-scrollgrid-sync-inner > .fc-col-header-cell-cushion,
         .fc-day-mon .fc-daygrid-day-number,
         .fc-day-tue .fc-daygrid-day-number,
@@ -112,14 +116,15 @@
 
         .fc-day-sun .fc-col-header-cell-cushion,
         .fc-day-sun a {
-            color: red;
+            color: red; /* 일요일의 텍스트 색상을 빨강으로 변경 */
         }
 
         .fc-day-sat .fc-col-header-cell-cushion,
         .fc-day-sat a {
-            color: blue;
+            color: white; /* 토요일의 텍스트 색상을 파란색으로 변경 */
         }
         
+        /* 컨테이너의 표시 방식을 수평으로 정렬하고 10px의 여백을 주도록 설정 */
         .container {
             display: inline-block;
             vertical-align: top;
@@ -249,6 +254,8 @@
 </div>
 
 
-<jsp:include page="footer.jsp" />
+<footer class="fixed-bottom">
+    <jsp:include page="footer.jsp" />
+</footer>
 </body>
 </html>

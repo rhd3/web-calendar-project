@@ -181,7 +181,7 @@
     <% } %>
 </table>
 
-<div class="button-container">
+<div class="button-container" style="display: flex; justify-content: space-between;">
     <% 
         int totalCount = getTotalCount(studentid);
         int totalPages = getTotalPages(totalCount);
@@ -191,6 +191,11 @@
         <%= i %>
     </button>
     <% } %>
+
+    
+    <button onclick="location.href='${contextPath}/innotice.jsp'">글 쓰기</button>
+
 </div>
+
 </body>
 </html>

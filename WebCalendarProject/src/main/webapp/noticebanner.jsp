@@ -91,7 +91,7 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+    <jsp:include page="header.jsp"/>
     <table>
         <tr>
             <th class="num">번호</th>
@@ -102,46 +102,43 @@
         </tr>
 
         <tr>
-<% // 게시글 리스트 읽어오기
-int studentid = (Integer)session.getAttribute("studentid");
+        <% // 게시글 리스트 읽어오기
+        int studentid = (Integer)session.getAttribute("studentid");
 
-try (
-    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendardb", "root", "1111");
-    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notice WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ? ) ORDER BY num DESC");
-) {
-    stmt.setInt(1, studentid);
-    ResultSet rs = stmt.executeQuery();
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendardb", "root", "1111");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notice WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ? ) ORDER BY num DESC");
+        ) {
+            stmt.setInt(1, studentid);
+            ResultSet rs = stmt.executeQuery();
 
-    // 게시글 레코드가 남아있는 동안 최대 5번 반복하여 화면에 출력
-    int count = 0;
-    while (rs.next() && count < 5) {
-        count++;
-%>
+            // 게시글 레코드가 남아있는 동안 최대 5번 반복하여 화면에 출력
+            int count = 0;
+            while (rs.next() && count < 5) {
+                count++;
+        %>
 
-        <tr>
-            <td><%= rs.getInt("num") %></td>
-            <td style="text-align:left;">
-                <a href="${contextPath}/view.jsp?num=<%= rs.getInt("num") %>">
-                    <%= rs.getString("title") %>
-                </a>
-            </td>
-            <td><%= rs.getString("writer") %></td>
-            <td><%= rs.getString("regtime") %></td>
-            <td><%= rs.getString("category") %></td>
-     
-        </tr>
-        <%
+            <tr>
+                <td><%= rs.getInt("num") %></td>
+                <td style="text-align:left;">
+                    <a href="${contextPath}/view.jsp?num=<%= rs.getInt("num") %>">
+                        <%= rs.getString("title") %>
+                    </a>
+                </td>
+                <td><%= rs.getString("writer") %></td>
+                <td><%= rs.getString("regtime") %></td>
+                <td><%= rs.getString("category") %></td>
+        
+            </tr>
+            </tr>
+            <%
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         %>
-     
-       
+    
+      
     </table>
-    <div class="button-container">
-        <button onclick="location.href='${contextPath}/innotice.jsp'">글 쓰기</button>
-        
-    </div>
 </body>
 </html>
