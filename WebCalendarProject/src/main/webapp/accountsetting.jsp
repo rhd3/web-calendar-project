@@ -24,7 +24,7 @@
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
 
-            String sql = "select userid, username, usertel from infouser where usernum = ?";
+            String sql = "select userid, username, usertel from infouser where studentid = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, studentid);
 

@@ -62,10 +62,10 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
 
-        String sql = "select * from events where category IN (select groupid from grouplist where studentid = ? and authority = 1 )";
+        String sql = "SELECT * FROM events WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ? and authority = 1 ) or category = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, studentid);
-
+        pstmt.setInt(2, studentid);
         ResultSet rs = pstmt.executeQuery();
 
         while (rs.next()) {
@@ -356,9 +356,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="eventModalLabel">상세정보</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <form>
@@ -400,7 +397,6 @@
                 
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                         <button type="button" class="btn btn-primary" id="saveEvent">저장</button>
                         <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
                     </div>

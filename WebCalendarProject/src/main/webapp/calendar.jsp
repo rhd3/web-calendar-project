@@ -47,10 +47,10 @@
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
 
-            String sql = "SELECT * FROM events WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ?)";
+            String sql = "SELECT * FROM events WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ?) or category in ('공휴일', '학사일정', ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, studentid);
-
+            pstmt.setInt(2, studentid);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -222,23 +222,23 @@
                 <form>
                     <div class="mb-3">
                         <label for="event-title" class="form-label fw-bold">제목</label>
-                        <p class="form-control-plaintext">제목 내용</p>
+                        <input type="text" class="form-control-plaintext" id="event-title" name="title" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="event-description" class="form-label fw-bold">내용</label>
-                        <p class="form-control-plaintext">내용 내용</p>
+                        <textarea class="form-control-plaintext" id="event-description" name="description" readonly></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="event-start-date" class="form-label fw-bold">시작 날짜</label>
-                        <p class="form-control-plaintext">2023-06-01</p>
+                        <input type="text" class="form-control-plaintext" id="event-start-date" name="start-date" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="event-end-date" class="form-label fw-bold">끝나는 날짜</label>
-                        <p class="form-control-plaintext">2023-06-30</p>
+                        <input type="text" class="form-control-plaintext" id="event-end-date" name="end-date" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="event-category" class="form-label fw-bold">카테고리</label>
-                        <p class="form-control-plaintext">회의</p>
+                        <input type="text" class="form-control-plaintext" id="event-category" name="category" readonly>
                     </div>
                 </form>
             </div>
