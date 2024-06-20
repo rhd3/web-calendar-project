@@ -1,8 +1,13 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.util.*, java.time.*" %>
 
 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./resource/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="./resource/css/font-awesome.min.css"/>
+<script src="./resource/js/bootstrap.bundle.min.js"></script>
 <%
     HttpSession userSession = request.getSession();
     int studentid = -1;
@@ -10,21 +15,17 @@
     if (userSession.getAttribute("studentid") != null) {
         studentid = (int)userSession.getAttribute("studentid");
     }
-
     // Get userName from the database using studentid
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
-
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CalendarDB", "root", "1111");
-
         String sql = "SELECT userName FROM infouser WHERE studentid = ?";
         pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, studentid);
         rs = pstmt.executeQuery();
-
         if (rs.next()) {
             userName = rs.getString("userName");
         }
@@ -37,15 +38,6 @@
     }
 %>
 
-<html>
-<head>
-<meta charset="UTF-8">
-<script src="./resource/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="./resource/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="./resource/css/font-awesome.min.css"/>
-
-<title>학사 일정</title>
-
 <style>
   .custom-link {
     color: white;
@@ -55,7 +47,6 @@
   .navbar-nav .nav-link {
     color: white;
   }
-
   main {
     height: 100vh;
     height: -webkit-fill-available;
@@ -65,13 +56,11 @@
     display: flex;
     justify-content: flex-end;
   }
-
   .nav-link:hover {
     color: white;
     border-radius: 10px;
     background-color: blue !important;
   }
-
   .sidebar {
     width: 280px;
     background-color: #243c62;
@@ -88,11 +77,9 @@
   .sidebar h3 {
     user-select: none; /* 드래그 방지 속성 */
   }
-  
   .sidebar.show {
     display: block;
   }
-
   .close-btn {
     color: white;
     font-size: 24px;
@@ -101,16 +88,13 @@
     right: 15px;
     cursor: pointer;
   }
-
   .calendar-container {
     border: none;
     box-shadow: none;
   }
-
   .btn {
     border-radius: 10px;
   }
-
   .sidebar-toggle-btn {
     background: transparent;
     border: none;
@@ -127,25 +111,21 @@
   .nav-pills .nav-link {
     color: white;
   }
-
   .nav-pills .nav-link:hover {
     background-color: blue;
+    border-radius: 10px;
   }
-
   .navbar-text {
     margin-left: auto;
     margin-right: 10px;
   }
-
   .sidebar-toggle-btn svg {
     width: 32px;
     height: 32px;
   }
 </style>
-
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #304C79;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -165,10 +145,9 @@
           <a class="nav-link custom-link" aria-current="page" href='manage.jsp'>일정 등록</a>
         </li>
         <span class="navbar-text">
-        	<%= userName %> 님 접속중
+          <%= userName %> 님 접속중
         </span>
       </ul>
-
       <button type="button" class="btn btn-warning" onclick="location.href='login.jsp'">로그아웃</button>
       <button id="sidebarToggle" type="button" class="sidebar-toggle-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -183,19 +162,10 @@
   <h3>Sidebar</h3>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="home.jsp" class="nav-link">Home</a>
+      <a href="notice_list.jsp" class="nav-link">공지사항</a>
     </li>
     <li>
-      <a href="dashboard.jsp" class="nav-link">Dashboard</a>
-    </li>
-    <li>
-      <a href="orders.jsp" class="nav-link">Orders</a>
-    </li>
-    <li>
-      <a href="products.jsp" class="nav-link">Products</a>
-    </li>
-    <li>
-      <a href="customers.jsp" class="nav-link">Customers</a>
+      <a href="dashboard.jsp" class="nav-link">마이페이지</a>
     </li>
   </ul>
   <hr>
