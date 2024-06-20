@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.4.0, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: calendardb
 -- ------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `notice` (
 
 LOCK TABLES `notice` WRITE;
 /*!40000 ALTER TABLE `notice` DISABLE KEYS */;
-INSERT INTO `notice` VALUES (NULL,'sdf','asgdf','agsdf','JSP','2024-06-18 07:06:50'),(1,'ㅁㄴㅇㄹ','ㅁㄴㅇㄹ','ㄻㅁㄴㄹㅇ','JSP','2024-06-17 22:57:08'),(2,'ㅁㄶㅇㄹ','ㅁㄴㅇㄻㄴㄹ','ㅁㄴㅇㄹㄴㅁㅇ','JSP','2024-06-18 05:24:55');
+INSERT INTO `notice` VALUES (NULL,'sdf','asgdf','agsdf','JSP','2024-06-18 07:06:50'),(1,'ㅁㄴㅇㄹ','ㅁㄴㅇㄹ','ㄻㅁㄴㄹㅇ','JSP','2024-06-17 22:57:08'),(2,'ㅁㄶㅇㄹ','ㅁㄴㅇㄻㄴㄹ','ㅁㄴㅇㄹㄴㅁㅇ','JSP','2024-06-18 05:24:55'),(3,'작성자','제목','내용','jsp','2024-06-28 14:58:00');
 /*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-18  7:14:29
+-- Dump completed on 2024-06-20 13:36:11

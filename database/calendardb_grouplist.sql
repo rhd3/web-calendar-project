@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.4.0, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: calendardb
 -- ------------------------------------------------------
@@ -28,7 +28,7 @@ CREATE TABLE `grouplist` (
   `studentid` int NOT NULL,
   `authority` int DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `grouplist` (
 
 LOCK TABLES `grouplist` WRITE;
 /*!40000 ALTER TABLE `grouplist` DISABLE KEYS */;
-INSERT INTO `grouplist` VALUES (1,'NAN',2020011898,NULL),(2,'NAN',20190101,NULL),(3,'NAN',20210101,NULL),(4,'JSP',2020011898,1),(5,'2020011898',2020011898,1);
+INSERT INTO `grouplist` VALUES (1,'헬스 동아리',2018202020,1),(2,'헬스 동아리	',2010111111,NULL),(3,'헬스 동아리',2023333333,NULL),(4,'필사 동아리',2022505050,1),(5,'필사 동아리',2020222222,NULL),(6,'필사 동아리',2022555555,NULL),(7,'돌 동아리',2024303030,1),(8,'돌 동아리',2015999999,NULL),(9,'돌 동아리',2019101010,NULL),(10,'네트워크 보안',618,1),(11,'네트워크 보안',2010111111,NULL),(12,'네트워크 보안',2020222222,NULL),(13,'네트워크 보안',2023333333,NULL),(14,'네트워크 보안',2015999999,NULL),(15,'네트워크 보안',2018202020,NULL),(16,'시스템 보안',619,1),(17,'시스템 보안',2020222222,NULL),(18,'시스템 보안',2021444444,NULL),(19,'시스템 보안',2022505050,NULL),(20,'웹프로그래밍',620,1),(21,'웹프로그래밍',2022555555,NULL),(22,'웹프로그래밍',2015999999,NULL),(23,'웹프로그래밍',2024303030,NULL),(24,'소프트웨어공학',621,1),(25,'소프트웨어공학',2021444444,NULL),(26,'소프트웨어공학',2019101010,NULL),(27,'소프트웨어공학',2022505050,NULL),(28,'어플리케이션보안',622,1),(29,'어플리케이션보안',2010111111,NULL),(30,'어플리케이션보안',2018202020,NULL);
 /*!40000 ALTER TABLE `grouplist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-18  7:14:29
+-- Dump completed on 2024-06-20 13:36:11
