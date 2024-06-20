@@ -101,6 +101,15 @@
             border-color: white;
         }
 
+		/* 드롭다운 메뉴 아이템 색상 스타일 */
+        .dropdown-menu .dropdown-item {
+            color: white !important;
+        }
+
+        /* 드롭다운 메뉴 배경색 */
+        .dropdown-menu {
+            background-color: #304C79 !important;
+        }
     </style>
 
 </head>
@@ -130,7 +139,7 @@
                         교내 홈페이지
                     </a>
                     <ul class="dropdown-menu" data-bs-theme="light">
-                        <li><a class="dropdown-item" href="https://www.cju.ac.kr/">청주대학교</a></li>
+                        <li><a class="dropdown-item" href="https://www.cju.ac.kr/">청주대학교이개 왜 안되지</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="https://portal.cju.ac.kr/">포털시스템</a></li>
                         <li><a class="dropdown-item" href="https://hive.cju.ac.kr/">에델바이스</a></li>
