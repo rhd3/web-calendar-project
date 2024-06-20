@@ -165,7 +165,7 @@
       <a href="notice_list.jsp" class="nav-link">공지사항</a>
     </li>
     <li>
-      <a href="dashboard.jsp" class="nav-link">마이페이지</a>
+      <a href="accountsetting.jsp" class="nav-link">마이페이지</a>
     </li>
   </ul>
   <hr>
