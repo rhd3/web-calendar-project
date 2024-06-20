@@ -100,7 +100,6 @@
         .navbar-toggler {
             border-color: white;
         }
-
     </style>
 
 </head>
