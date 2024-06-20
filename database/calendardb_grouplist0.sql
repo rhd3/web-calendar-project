@@ -1,0 +1,53 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: calendardb
+-- ------------------------------------------------------
+-- Server version	8.0.37
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `grouplist`
+--
+
+DROP TABLE IF EXISTS `grouplist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `grouplist` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `groupid` varchar(20) NOT NULL,
+  `studentid` int NOT NULL,
+  `authority` int DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grouplist`
+--
+
+LOCK TABLES `grouplist` WRITE;
+/*!40000 ALTER TABLE `grouplist` DISABLE KEYS */;
+INSERT INTO `grouplist` VALUES (38,'어플리케이션보안',9929,1),(39,'소프트웨어공학',9923,1),(40,'웹프로그래밍',2309,1),(41,'네트워크보안',5552,1),(42,'시스템보안',9923,1),(43,'NAN',2020011898,1),(44,'Reversing',2020011898,1),(50,'어플리케이션보안',2020011898,NULL),(51,'소프트웨어공학',2020011898,NULL),(52,'웹프로그래밍',2020011898,NULL),(53,'네트워크보안',2020011898,NULL),(54,'시스템보안',2020011898,NULL),(55,'어플리케이션보안',2022011889,NULL),(56,'어플리케이션보안',2019010578,NULL),(57,'어플리케이션보안',2021011922,NULL),(58,'소프트웨어공학',2022011889,NULL),(59,'소프트웨어공학',2019010578,NULL),(60,'소프트웨어공학',2021011922,NULL),(61,'웹프로그래밍',2022011889,NULL),(62,'웹프로그래밍',2019010578,NULL),(63,'웹프로그래밍',2021011922,NULL),(64,'네트워크보안',2022011889,NULL),(65,'네트워크보안',2019010578,NULL),(66,'네트워크보안',2021011922,NULL),(67,'시스템보안',2022011889,NULL),(68,'시스템보안',2019010578,NULL),(69,'시스템보안',2021011922,NULL);
+/*!40000 ALTER TABLE `grouplist` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-06-20 18:49:22
