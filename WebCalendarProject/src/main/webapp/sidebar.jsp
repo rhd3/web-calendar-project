@@ -139,7 +139,7 @@
                         교내 홈페이지
                     </a>
                     <ul class="dropdown-menu" data-bs-theme="light">
-                        <li><a class="dropdown-item" href="https://www.cju.ac.kr/">청주대학교이개 왜 안되지</a></li>
+                        <li><a class="dropdown-item" href="https://www.cju.ac.kr/">청주대학교</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="https://portal.cju.ac.kr/">포털시스템</a></li>
                         <li><a class="dropdown-item" href="https://hive.cju.ac.kr/">에델바이스</a></li>
