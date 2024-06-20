@@ -7,10 +7,63 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html; charset=utf-8" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+
+<%!
+    private static final int PAGE_SIZE = 20;
+
+    private List<Map<String, Object>> getNoticeList(int studentid, int currentPage) {
+        List<Map<String, Object>> noticeList = new ArrayList<>();
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendardb", "root", "1111");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notice WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ?) ORDER BY num DESC LIMIT ?, ?");
+        ) {
+            stmt.setInt(1, studentid);
+            stmt.setInt(2, (currentPage - 1) * PAGE_SIZE);
+            stmt.setInt(3, PAGE_SIZE);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Map<String, Object> notice = new HashMap<>();
+                notice.put("num", rs.getInt("num"));
+                notice.put("title", rs.getString("title"));
+                notice.put("writer", rs.getString("writer"));
+                notice.put("regtime", rs.getString("regtime"));
+                notice.put("category", rs.getString("category"));
+                noticeList.add(notice);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return noticeList;
+    }
+
+    private int getTotalCount(int studentid) {
+        int totalCount = 0;
+        try (
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendardb", "root", "1111");
+            PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM notice WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ?)");
+        ) {
+            stmt.setInt(1, studentid);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                totalCount = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalCount;
+    }
+
+    private int getTotalPages(int totalCount) {
+        return (totalCount + PAGE_SIZE - 1) / PAGE_SIZE;
+    }
+%>
 
 <!DOCTYPE html>
 <html>
 <head>
+   <head>
 	<link href="./resources/image/title-logo.png" rel="shortcut icon" type="image/x-icon">
     <title>공지사항</title>
    <style>
@@ -90,58 +143,51 @@
     </style>
 
 </head>
+</head>
 <body>
 <jsp:include page="header.jsp"/>
-    <table>
-        <tr>
-            <th class="num">번호</th>
-            <th class="title">제목</th>
-            <th class="writer">작성자</th>
-            <th class="regtime">작성일</th>
-            <th class="category">그룹</th>
-        </tr>
+<table>
+    <tr>
+        <th class="num">번호</th>
+        <th class="title">제목</th>
+        <th class="writer">작성자</th>
+        <th class="regtime">작성일</th>
+        <th class="category">그룹</th>
+    </tr>
 
-        <tr>
-<% // 게시글 리스트 읽어오기
-int studentid = (Integer)session.getAttribute("studentid");
+    <%
+        int studentid = (Integer)session.getAttribute("studentid");
+        int currentPage = 1;
+        if (request.getParameter("currentPage") != null) {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
+        List<Map<String, Object>> noticeList = getNoticeList(studentid, currentPage);
+        for (Map<String, Object> notice : noticeList) {
+    %>
+    <tr>
+        <td><%= notice.get("num") %></td>
+        <td style="text-align:left;">
+            <a href="${contextPath}/view.jsp?num=<%= notice.get("num") %>">
+                <%= notice.get("title") %>
+            </a>
+        </td>
+        <td><%= notice.get("writer") %></td>
+        <td><%= notice.get("regtime") %></td>
+        <td><%= notice.get("category") %></td>
+    </tr>
+    <% } %>
+</table>
 
-try (
-    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/calendardb", "root", "1111");
-    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notice WHERE category IN (SELECT groupid FROM grouplist WHERE studentid = ? ) ORDER BY num DESC");
-) {
-    stmt.setInt(1, studentid);
-    ResultSet rs = stmt.executeQuery();
-
-    // 게시글 레코드가 남아있는 동안 최대 5번 반복하여 화면에 출력
-    int count = 0;
-    while (rs.next() && count < 5) {
-        count++;
-%>
-
-        <tr>
-            <td><%= rs.getInt("num") %></td>
-            <td style="text-align:left;">
-                <a href="${contextPath}/view.jsp?num=<%= rs.getInt("num") %>">
-                    <%= rs.getString("title") %>
-                </a>
-            </td>
-            <td><%= rs.getString("writer") %></td>
-            <td><%= rs.getString("regtime") %></td>
-            <td><%= rs.getString("category") %></td>
-     
-        </tr>
-        <%
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        %>
-     
-       
-    </table>
-    <div class="button-container">
-        <button onclick="location.href='${contextPath}/innotice.jsp'">글 쓰기</button>
-        
-    </div>
+<div class="button-container">
+    <% 
+        int totalCount = getTotalCount(studentid);
+        int totalPages = getTotalPages(totalCount);
+        for (int i = 1; i <= totalPages; i++) {
+    %>
+    <button onclick="location.href='${contextPath}/notice_list.jsp?currentPage=<%= i %>'">
+        <%= i %>
+    </button>
+    <% } %>
+</div>
 </body>
 </html>
