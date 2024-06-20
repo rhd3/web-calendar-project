@@ -3,13 +3,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.*" %>
 
-<%
-    HttpSession userSession = request.getSession();
-    int studentid = -1;
-    if (userSession.getAttribute("studentid") != null) {
-        studentid = (int)userSession.getAttribute("studentid");
-    }
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +15,7 @@
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
 		String userName = request.getParameter("userName");
-		String userSnum = request.getParameter("userNum");
+		String studentid = request.getParameter("userNum");
 		String userTel = request.getParameter("userTel");
 		String dbURL = "jdbc:mysql://localhost:3306/CalendarDB";
 		String dbUser = "root";
@@ -35,13 +28,13 @@
         	Class.forName("com.mysql.jdbc.Driver"); // jdbc 드라이버 연결
         	conn = DriverManager.getConnection(dbURL, dbUser, dbPW); //db 연결시도
         	
-        	String sql = "INSERT INTO infouser (userId, userPw, userName, userNum,userTel ) VALUES(?,?,?,?,?)";
+        	String sql = "INSERT INTO infouser (userId, userPw, userName, studentid,userTel ) VALUES(?,?,?,?,?)";
         	//db 문법 
         	pstmt = conn.prepareStatement(sql); //쿼리 실행전 준비? 연결?
 			pstmt.setString(1, userId); //? 에 해당하는 파라미터를 setString을통해 설정
         	pstmt.setString(2, userPw);
         	pstmt.setString(3, userName);
-        	pstmt.setString(4, userSnum);
+        	pstmt.setString(4, studentid);
         	pstmt.setString(5, userTel);
         	pstmt.executeUpdate(); //sql 쿼리실행
         	// sql 쿼리의 '?' 자리에 값을 대입, 쿼리를 실행하여 데이터베이스에 데이터를 삽입
